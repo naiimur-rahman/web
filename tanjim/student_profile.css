@@ -1,0 +1,231 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f6fb;
+    color: #222;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 230px;
+    min-height: 100vh;
+    background: #203f78;
+    color: white;
+    position: fixed;
+}
+
+.logo {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    font-size: 23px;
+    font-weight: bold;
+    background: #173461;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+.profile-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: white;
+    color: #203f78;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.student-name {
+    font-weight: bold;
+}
+
+.student-id {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.menu {
+    margin-top: 15px;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 22px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: #4169a5;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.logout a {
+    display: block;
+    padding: 15px 22px;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Main */
+
+.main {
+    margin-left: 230px;
+    width: calc(100% - 230px);
+    padding: 30px;
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #203f78;
+    font-size: 28px;
+}
+
+.page-header p {
+    margin-top: 8px;
+    color: #666;
+}
+
+
+/* Profile Header */
+
+.profile-header {
+    margin-top: 25px;
+    padding: 25px;
+    background: linear-gradient(90deg, #205bcb, #438bc7);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.large-avatar {
+    width: 75px;
+    height: 75px;
+    background: white;
+    color: #205bcb;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.profile-header h2 {
+    margin: 0 0 8px;
+}
+
+.profile-header p {
+    margin: 5px 0;
+}
+
+.profile-header span {
+    font-size: 13px;
+}
+
+
+/* Information Cards */
+
+.info-card {
+    margin-top: 20px;
+    padding: 23px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.05);
+}
+
+.info-card h2 {
+    margin: 0 0 20px;
+    color: #203f78;
+    font-size: 20px;
+    border-bottom: 2px solid #205bcb;
+    padding-bottom: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-grid label {
+    font-size: 12px;
+    color: #777;
+    font-weight: bold;
+}
+
+.info-grid p {
+    margin: 7px 0 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.good {
+    color: #258344 !important;
+}
+
+.active-status {
+    color: #258344 !important;
+}
+
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    .container {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .logout {
+        position: relative;
+        bottom: auto;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

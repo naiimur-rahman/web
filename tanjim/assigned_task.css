@@ -1,0 +1,435 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f6fb;
+    color: #222;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 230px;
+    min-height: 100vh;
+    background: #203f78;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    font-size: 23px;
+    font-weight: bold;
+    background: #173461;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+.profile-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: white;
+    color: #203f78;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.student-name {
+    font-weight: bold;
+}
+
+.student-id {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #d7e2f5;
+}
+
+
+/* Menu */
+
+.menu {
+    margin-top: 15px;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 22px;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: #4169a5;
+}
+
+
+/* Logout */
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.logout a {
+    display: block;
+    padding: 15px 22px;
+
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Main */
+
+.main {
+    margin-left: 230px;
+    width: calc(100% - 230px);
+    padding: 30px;
+}
+
+
+/* Page Header */
+
+.page-header h1 {
+    margin: 0;
+
+    color: #203f78;
+    font-size: 28px;
+}
+
+.page-header p {
+    margin-top: 8px;
+
+    color: #666;
+}
+
+
+/* TA Information */
+
+.ta-info {
+    margin-top: 25px;
+
+    padding: 22px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,.05);
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ta-info h2 {
+    margin: 0 0 8px;
+
+    color: #203f78;
+
+    font-size: 20px;
+}
+
+.ta-info p {
+    margin: 0;
+
+    color: #555;
+}
+
+.active-badge {
+    background: #d8f2df;
+
+    color: #23743a;
+
+    padding: 8px 15px;
+
+    border-radius: 15px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* Statistics */
+
+.stats {
+    display: flex;
+
+    gap: 18px;
+
+    margin-top: 20px;
+}
+
+.stat {
+    width: 33.33%;
+
+    padding: 20px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    border-top: 4px solid #205bcb;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,.05);
+}
+
+.stat h3 {
+    margin: 0;
+
+    color: #203f78;
+
+    font-size: 15px;
+}
+
+.number {
+    margin-top: 15px;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #205bcb;
+}
+
+.stat p {
+    margin: 8px 0 0;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* Panel */
+
+.panel {
+    margin-top: 25px;
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,.05);
+}
+
+.panel-header {
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    margin: 0;
+
+    color: #203f78;
+}
+
+.panel-header p {
+    margin: 7px 0 0;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* Task Card */
+
+.task-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ddd;
+
+    border-left: 5px solid #205bcb;
+
+    border-radius: 6px;
+
+    background: #fafbfe;
+}
+
+.task-number {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #e3ecfb;
+
+    color: #205bcb;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.task-content {
+    flex: 1;
+}
+
+.task-content h3 {
+    margin: 0 0 8px;
+
+    color: #203f78;
+
+    font-size: 17px;
+}
+
+.task-content p {
+    margin: 0 0 12px;
+
+    color: #666;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.task-details {
+    display: flex;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+}
+
+.task-details span {
+    font-size: 12px;
+
+    color: #666;
+}
+
+
+/* Status */
+
+.task-status {
+    padding: 8px 13px;
+
+    border-radius: 15px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.completed {
+    background: #d8f2df;
+
+    color: #23743a;
+}
+
+.pending {
+    background: #fff0c7;
+
+    color: #8a6500;
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .stat {
+        width: 100%;
+    }
+
+    .task-card {
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .container {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        min-height: auto;
+    }
+
+    .logout {
+        position: relative;
+
+        bottom: auto;
+    }
+
+    .main {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 20px;
+    }
+
+    .ta-info {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .task-card {
+        flex-direction: column;
+    }
+
+}

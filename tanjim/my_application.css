@@ -1,0 +1,236 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f6fb;
+    color: #222;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 230px;
+    min-height: 100vh;
+    background: #203f78;
+    color: white;
+    position: fixed;
+}
+
+.logo {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    font-size: 23px;
+    font-weight: bold;
+    background: #173461;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+.profile-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: white;
+    color: #203f78;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.student-name {
+    font-weight: bold;
+}
+
+.student-id {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.menu {
+    margin-top: 15px;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 22px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: #4169a5;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.logout a {
+    display: block;
+    padding: 15px 22px;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Main */
+
+.main {
+    margin-left: 230px;
+    width: calc(100% - 230px);
+    padding: 30px;
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #203f78;
+    font-size: 28px;
+}
+
+.page-header p {
+    margin-top: 8px;
+    color: #666;
+}
+
+
+/* Panel */
+
+.panel {
+    margin-top: 25px;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.05);
+}
+
+.panel h2 {
+    margin: 0;
+    color: #203f78;
+}
+
+.description {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+
+/* Application */
+
+.application-card {
+    min-height: 120px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-left: 5px solid #205bcb;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.application-info h3 {
+    margin: 0 0 10px;
+    color: #203f78;
+}
+
+.application-info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 13px;
+}
+
+.application-status {
+    padding: 9px 15px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.review {
+    background: #fff0c7;
+    color: #8a6500;
+}
+
+.selected {
+    background: #d8f2df;
+    color: #23743a;
+}
+
+.rejected {
+    background: #f8dada;
+    color: #a52828;
+}
+
+
+/* Bottom Button */
+
+.bottom-button {
+    margin-top: 25px;
+}
+
+.bottom-button a {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #205bcb;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    .container {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .logout {
+        position: relative;
+        bottom: auto;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .application-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+}

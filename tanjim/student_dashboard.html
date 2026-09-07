@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TA Portal - Dashboard</title>
+    <link rel="stylesheet" href="student_dashboard.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">TA PORTAL</div>
+
+        <div class="student-info">
+          <div class="profile-icon">T</div>
+          <div>
+            <div class="student-name">Tanjim Tazwar</div>
+            <div class="student-id">011222146</div>
+          </div>
+        </div>
+
+        <div class="menu">
+          <a href="student_dashboard.html" class="menu-item active"
+            >Dashboard</a
+          >
+          <a href="ta_position.html" class="menu-item">Available Positions</a>
+          <a href="my_applications.html" class="menu-item">My Applications</a>
+          <a href="student_profile.html" class="menu-item">My Profile</a>
+          <a href="assigned_task.html" class="menu-item">Assigned Task</a>
+        </div>
+
+        <div class="logout">
+          <a href="../kazol/login.html">Logout</a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main">
+        <div class="topbar">
+          <div>
+            <h1>Student Dashboard</h1>
+            <p>Manage your TA applications and duties</p>
+          </div>
+        </div>
+
+        <!-- Welcome Card -->
+        <div class="welcome">
+          <div>
+            <h2>Welcome back, Tanjim Tazwar!</h2>
+            <p>Find TA opportunities and manage your applications.</p>
+          </div>
+
+          <a href="ta_position.html" class="button"> View Positions </a>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats">
+          <div class="stat blue">
+            <div class="stat-title">Applications</div>
+            <div class="stat-number">04</div>
+            <div class="stat-status">2 Under Review</div>
+          </div>
+
+          <div class="stat green">
+            <div class="stat-title">Shortlisted</div>
+            <div class="stat-number">02</div>
+            <div class="stat-status">Interview Pending</div>
+          </div>
+
+          <div class="stat orange">
+            <div class="stat-title">Interviews</div>
+            <div class="stat-number">01</div>
+            <div class="stat-status">Upcoming</div>
+          </div>
+
+          <div class="stat purple">
+            <div class="stat-title">Assigned Duties</div>
+            <div class="stat-number">01</div>
+            <div class="stat-status">Active</div>
+          </div>
+        </div>
+
+        <!-- Available Positions -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Available Positions</h2>
+              <p>Open TA opportunities</p>
+            </div>
+
+            <a href="ta_position.html">View All</a>
+          </div>
+
+          <div class="position-row">
+            <div class="position-card">
+              <h3>Web Programming TA</h3>
+              <p>Instructor: Mahmudul Hasan</p>
+              <p>Course: CSE 4165</p>
+
+              <div class="details">
+                <span>2 Vacancies</span>
+                <span>Sep 15, 2026</span>
+              </div>
+
+              <a href="apply.html" class="apply-button">Apply</a>
+            </div>
+
+            <div class="position-card">
+              <h3>Database Systems TA</h3>
+              <p>Instructor: Dr. Rahman</p>
+              <p>Course: CSE 4141</p>
+
+              <div class="details">
+                <span>1 Vacancy</span>
+                <span>Sep 18, 2026</span>
+              </div>
+
+              <a href="apply.html" class="apply-button">Apply</a>
+            </div>
+
+            <div class="position-card">
+              <h3>Data Structures TA</h3>
+              <p>Instructor: Dr. Ahmed</p>
+              <p>Course: CSE 2213</p>
+
+              <div class="details">
+                <span>2 Vacancies</span>
+                <span>Sep 20, 2026</span>
+              </div>
+
+              <a href="apply.html" class="apply-button">Apply</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Applications -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>My Applications</h2>
+              <p>Recent application status</p>
+            </div>
+
+            <a href="applications.html">View All</a>
+          </div>
+
+          <table>
+            <tr>
+              <th>Position</th>
+              <th>Applied Date</th>
+              <th>Status</th>
+            </tr>
+
+            <tr>
+              <td>Web Programming</td>
+              <td>Sep 02, 2026</td>
+              <td>
+                <span class="status review">Under Review</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Database Management Systems</td>
+              <td>Aug 29, 2026</td>
+              <td>
+                <span class="status selected">Selected</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Data Structure and Algorithm 1</td>
+              <td>Aug 25, 2026</td>
+              <td>
+                <span class="status rejected">Rejected</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

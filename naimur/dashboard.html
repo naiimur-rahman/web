@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Faculty Dashboard - TA Management System</title>
+    <link href="dashboard.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="dashboard-ext-1">
+          <div class="dashboard-ext-2">UIU TA Management</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" href="dashboard.html">
+          <span>📊</span> Dashboard
+        </a>
+        <a class="nav-item" href="applicants.html">
+          <span>👥</span> Applicants
+        </a>
+        <a class="nav-item" href="shortlist.html">
+          <span>✓</span> Shortlisted Students
+        </a>
+        <a class="nav-item" href="interviews.html">
+          <span>📅</span> Interview Schedule
+        </a>
+        <a class="nav-item" href="assigned.html">
+          <span>📋</span> Assigned TAs
+        </a>
+        <a class="nav-item" href="reviews.html"> <span>⭐</span> TA Reviews </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="nav-item dashboard-ext-3"><span>👤</span> Profile</div>
+        <a href="../kazol/login.html" class="logout-btn"
+          ><span>🚪</span> Logout</a
+        >
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-title">
+          <h2>Faculty Dashboard</h2>
+          <p>Welcome back, System Overview</p>
+        </div>
+        <div class="header-profile">
+          <div class="dashboard-ext-4">
+            <div class="dashboard-ext-5">Mr. Mahmudul Hasan</div>
+            <div class="dashboard-ext-6">PROFESSOR, CSE</div>
+          </div>
+          <div class="avatar">M</div>
+        </div>
+      </header>
+      <div class="page-container">
+        <!-- Banner -->
+        <div class="banner-card">
+          <h3>ACADEMIC SESSION: FALL 2026</h3>
+          <h1>Welcome back, Mr. Mahmudul Hasan</h1>
+          <p>
+            Review TA applicants and manage Teaching Assistant activities for
+            your upcoming courses in the Computer Science department.
+          </p>
+          <div class="dashboard-ext-7">
+            <div class="dashboard-ext-8">🏢</div>
+            <div>
+              <div class="dashboard-ext-9">OFFICE LOCATION</div>
+              <div class="dashboard-ext-10">Room 836 (A)</div>
+            </div>
+          </div>
+        </div>
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-box stat-box-blue">
+            <div class="stat-box-top">
+              <div class="stat-icon dashboard-ext-11">👥</div>
+              <span class="dashboard-ext-12">+12%</span>
+            </div>
+            <h2>18</h2>
+            <p>TOTAL APPLICANTS</p>
+          </div>
+          <div class="stat-box dashboard-ext-13 stat-box-green">
+            <div class="stat-box-top">
+              <div class="stat-icon dashboard-ext-14">✓</div>
+              <span class="dashboard-ext-15">Active</span>
+            </div>
+            <h2>06</h2>
+            <p>SHORTLISTED</p>
+          </div>
+          <div class="stat-box stat-box-orange">
+            <div class="stat-box-top">
+              <div class="stat-icon dashboard-ext-16">📅</div>
+            </div>
+            <h2>02</h2>
+            <p>INTERVIEWS TODAY</p>
+          </div>
+          <div class="stat-box stat-box-purple">
+            <div class="stat-box-top">
+              <div class="stat-icon dashboard-ext-17">🏆</div>
+            </div>
+            <h2>03</h2>
+            <p>ASSIGNED TAS</p>
+          </div>
+        </div>
+        <div class="grid-2col">
+          <!-- Recent Applicants -->
+          <div class="table-container dashboard-ext-18">
+            <div class="table-header-area">
+              <h3>Recent Applicants</h3>
+              <a class="action-link" href="applicants.html">View All →</a>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>CGPA</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">MT</div>
+                      <div>
+                        <div class="student-name">Md. Tauhid Tazwar Khan</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-ext-19">3.82</td>
+                  <td><span class="badge badge-pending">Pending</span></td>
+                  <td><a class="action-link" href="#">Review</a></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">NJ</div>
+                      <div>
+                        <div class="student-name">Nusrat Jahan</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-ext-19">3.75</td>
+                  <td>
+                    <span class="badge badge-shortlisted">Shortlisted</span>
+                  </td>
+                  <td><a class="action-link" href="#">Review</a></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">TH</div>
+                      <div>
+                        <div class="student-name">Tanvir Hasan</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-ext-19">3.68</td>
+                  <td>
+                    <span class="badge badge-interview"
+                      >Interview Scheduled</span
+                    >
+                  </td>
+                  <td><a class="action-link" href="#">Review</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

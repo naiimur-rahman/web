@@ -1,0 +1,133 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TA Management System - Login</title>
+    <link href="login.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- Left Panel -->
+      <div class="login-left">
+        <div class="login-brand">
+          <div class="logo-placeholder login-ext-1">UIU</div>
+          <div class="brand-text">
+            <h2>UNIVERSITY PORTAL</h2>
+            <p>TA Management</p>
+          </div>
+        </div>
+        <div class="login-quote">
+          <div class="orange-line"></div>
+          <h3>Empowering Academic Excellence.</h3>
+          <p>
+            A specialized platform designed to streamline Teaching Assistant
+            recruitment, performance tracking, and administrative workflows for
+            United International University.
+          </p>
+        </div>
+        <div class="login-footer">
+          <span>🛡️ SECURE ACCESS</span>
+          <span>🌊 EFFICIENT FLOW</span>
+        </div>
+      </div>
+      <!-- Right Panel (Form) -->
+      <div class="login-right">
+        <div class="login-form-box">
+          <a class="login-ext-2" href="index.html">← Back to Home</a>
+          <h2>Welcome Back</h2>
+          <p>Please enter your credentials to access the TA dashboard.</p>
+          <div class="form-group login-ext-3">
+            <label class="login-ext-4">SELECT YOUR IDENTITY</label>
+          </div>
+          <div class="role-selector" id="roleSelector">
+            <div class="role-option active" onclick="selectRole(this)">
+              <div class="login-ext-5">👤</div>
+              Student
+            </div>
+            <div class="role-option" onclick="selectRole(this)">
+              <div class="login-ext-5">👨‍🏫</div>
+              Faculty
+            </div>
+            <div class="role-option" onclick="selectRole(this)">
+              <div class="login-ext-5">🛡️</div>
+              Admin
+            </div>
+          </div>
+          <div class="form-group">
+            <label>
+              Institutional Email
+              <span class="domain">@uiu.ac.bd</span>
+            </label>
+            <div class="input-wrapper">
+              <span class="input-icon">📧</span>
+              <input id="username" placeholder="student" type="text" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>
+              Password
+              <a href="#">Forgot password?</a>
+            </label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔒</span>
+              <input id="password" placeholder="••••••••" type="password" />
+              <span class="eye-icon">👁️</span>
+            </div>
+          </div>
+          <div class="checkbox-group">
+            <input id="stay-logged" type="checkbox" />
+            <label class="login-ext-6" for="stay-logged"
+              >Stay logged in for 30 days</label
+            >
+          </div>
+          <button class="btn-primary" onclick="handleLogin()">
+            Access Portal →
+          </button>
+          <div class="trouble-signing">
+            Having trouble signing in?
+            <a href="#">Contact System Administrator</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function selectRole(element) {
+        // Remove active class from all options
+        const options = document.querySelectorAll(".role-option");
+        options.forEach((opt) => opt.classList.remove("active"));
+
+        // Add active class to clicked option
+        element.classList.add("active");
+        
+        // Update placeholder based on selected role
+        const role = element.innerText.trim().toLowerCase();
+        const usernameInput = document.getElementById("username");
+        
+        if (role.includes("faculty")) {
+          usernameInput.placeholder = "faculty";
+        } else if (role.includes("admin")) {
+          usernameInput.placeholder = "admin";
+        } else {
+          usernameInput.placeholder = "student";
+        }
+      }
+
+      function handleLogin() {
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+
+        if (user === "faculty" && pass === "1234") {
+          window.location.href = "../naimur/dashboard.html";
+        } else if (user === "student" && pass === "1234") {
+          window.location.href = "../tanjim/student_dashboard.html";
+        } else {
+          alert(
+            "Invalid credentials. Please use 'faculty' / '1234' or 'student' / '1234'.",
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TA Portal - My Applications</title>
+    <link rel="stylesheet" href="my_application.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+
+      <div class="sidebar">
+        <div class="logo">TA PORTAL</div>
+
+        <div class="student-info">
+          <div class="profile-icon">T</div>
+          <div>
+            <div class="student-name">Tanjim Tazwar</div>
+            <div class="student-id">011222146</div>
+          </div>
+        </div>
+
+        <div class="menu">
+          <a href="student_dashboard.html" class="menu-item">Dashboard</a>
+          <a href="ta_position.html" class="menu-item">Available Positions</a>
+          <a href="my_applications.html" class="menu-item active"
+            >My Applications</a
+          >
+          <a href="student_profile.html" class="menu-item">My Profile</a>
+          <a href="assigned_task.html" class="menu-item">Assigned Task</a>
+        </div>
+
+        <div class="logout">
+          <a href="../kazol/login.html">Logout</a>
+        </div>
+      </div>
+
+      <!-- Main -->
+
+      <div class="main">
+        <div class="page-header">
+          <h1>My Applications</h1>
+          <p>Track the status of your TA applications</p>
+        </div>
+
+        <div class="panel">
+          <h2>Application Status</h2>
+
+          <p class="description">View all your submitted TA applications.</p>
+
+          <!-- Application 1 -->
+
+          <div class="application-card">
+            <div class="application-info">
+              <h3>Web Programming TA</h3>
+
+              <p>Course: CSE 4165</p>
+
+              <p>Applied: September 02, 2026</p>
+            </div>
+
+            <div class="application-status review">Under Review</div>
+          </div>
+
+          <!-- Application 2 -->
+
+          <div class="application-card">
+            <div class="application-info">
+              <h3>Database Management Systems TA</h3>
+
+              <p>Course: CSE 4141</p>
+
+              <p>Applied: August 29, 2026</p>
+            </div>
+
+            <div class="application-status selected">Selected</div>
+          </div>
+
+          <!-- Application 3 -->
+
+          <div class="application-card">
+            <div class="application-info">
+              <h3>Data Structure and Algorithm TA</h3>
+
+              <p>Course: CSE 2213</p>
+
+              <p>Applied: August 25, 2026</p>
+            </div>
+
+            <div class="application-status rejected">Rejected</div>
+          </div>
+
+          <div class="bottom-button">
+            <a href="positions.html"> Apply for Another Position </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

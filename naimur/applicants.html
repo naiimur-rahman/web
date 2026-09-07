@@ -1,0 +1,172 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Applicants - TA Management System</title>
+    <link href="applicants.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Sidebar (Same as dashboard) -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="applicants-ext-1">
+          <div class="applicants-ext-2">UIU TA Management</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="dashboard.html">
+          <span>📊</span> Dashboard
+        </a>
+        <a class="nav-item active" href="applicants.html">
+          <span>👥</span> Applicants
+        </a>
+        <a class="nav-item" href="shortlist.html">
+          <span>✓</span> Shortlisted Students
+        </a>
+        <a class="nav-item" href="interviews.html">
+          <span>📅</span> Interview Schedule
+        </a>
+        <a class="nav-item" href="assigned.html">
+          <span>📋</span> Assigned TAs
+        </a>
+        <a class="nav-item" href="reviews.html"> <span>⭐</span> TA Reviews </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="nav-item applicants-ext-3"><span>👤</span> Profile</div>
+        <a href="../kazol/login.html" class="logout-btn"
+          ><span>🚪</span> Logout</a
+        >
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-title">
+          <h2>Applicant Overview</h2>
+          <p>
+            View and manage students who applied for Teaching Assistant
+            positions.
+          </p>
+        </div>
+        <div class="header-profile">
+          <div class="applicants-ext-4">
+            <div>🎓</div>
+            <div>
+              <div class="applicants-ext-5">Active Semester</div>
+              <div class="applicants-ext-6">Fall 2026</div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="page-container">
+        <div class="grid-2col">
+          <!-- Left Profile Card -->
+          <div class="card applicants-ext-7">
+            <div class="applicants-ext-8">M</div>
+            <div class="applicants-ext-9">Assigned Faculty</div>
+            <h3 class="applicants-ext-10">Mr. Mahmudul Hasan</h3>
+            <p class="applicants-ext-11">Senior Lecturer, CSE</p>
+            <div class="applicants-ext-12">
+              <div class="applicants-ext-13">Current Course</div>
+              <div class="applicants-ext-14">Web Programming</div>
+              <div class="applicants-ext-15">
+                <span class="applicants-ext-16"></span> Section: A, B, C
+              </div>
+            </div>
+            <div class="applicants-ext-17">
+              <div class="applicants-ext-18">
+                <div class="applicants-ext-13">Applicants</div>
+                <div class="applicants-ext-19">24</div>
+              </div>
+              <div class="applicants-ext-18">
+                <div class="applicants-ext-13">Open Slots</div>
+                <div class="applicants-ext-20">03</div>
+              </div>
+            </div>
+            <button class="btn btn-primary applicants-ext-21">
+              Contact Coordinator
+            </button>
+          </div>
+          <!-- Right Table -->
+          <div class="table-container">
+            <div class="table-header-area">
+              <h3>Application Queue</h3>
+              <input
+                class="applicants-ext-22"
+                placeholder="Search ID or Name"
+                type="text"
+              />
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>ID</th>
+                  <th>CGPA</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">TK</div>
+                      <div>
+                        <div class="student-name">Md. Tauhid Tazwar Khan</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="applicants-ext-2">01122212345</td>
+                  <td class="applicants-ext-23">3.82</td>
+                  <td><span class="badge badge-pending">Pending</span></td>
+                  <td><a class="action-link" href="#">View Profile</a></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">NJ</div>
+                      <div>
+                        <div class="student-name">Nusrat Jahan</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="applicants-ext-2">01122114567</td>
+                  <td class="applicants-ext-23">3.78</td>
+                  <td><span class="badge badge-pending">Pending</span></td>
+                  <td><a class="action-link" href="#">View Profile</a></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">TH</div>
+                      <div>
+                        <div class="student-name">Tanvir Hasan</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="applicants-ext-2">01122011234</td>
+                  <td class="applicants-ext-23">3.65</td>
+                  <td>
+                    <span class="badge badge-shortlisted">Shortlisted</span>
+                  </td>
+                  <td><a class="action-link" href="#">View Profile</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="applicants-ext-24">
+              <button class="btn btn-primary applicants-ext-25">
+                ✓ Shortlist Selected
+              </button>
+              <button class="btn btn-primary applicants-ext-26">
+                📅 Schedule Interview
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

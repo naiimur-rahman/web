@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TA Reviews - Faculty Dashboard</title>
+    <link rel="stylesheet" href="reviews.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">UIU TA Management</div>
+
+      <nav class="sidebar-nav">
+        <a class="nav-item" href="dashboard.html">
+          <span>📊</span> Dashboard
+        </a>
+        <a class="nav-item" href="applicants.html">
+          <span>👥</span> Applicants
+        </a>
+        <a class="nav-item" href="shortlist.html">
+          <span>✓</span> Shortlisted Students
+        </a>
+        <a class="nav-item" href="interviews.html">
+          <span>📅</span> Interview Schedule
+        </a>
+        <a class="nav-item" href="assigned.html">
+          <span>📋</span> Assigned TAs
+        </a>
+        <a class="nav-item active" href="reviews.html">
+          <span>⭐</span> TA Reviews
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="nav-item"><span>👤</span> Profile</div>
+        <a href="../kazol/login.html" class="logout-btn"
+          ><span>🚪</span> Logout</a
+        >
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-title">
+          <h2>Performance Reviews</h2>
+          <p>
+            Evaluate and provide feedback for your active Teaching Assistants.
+          </p>
+        </div>
+
+        <div class="header-profile">
+          <div>
+            <div style="font-weight: 600; font-size: 14px">
+              Mr. Mahmudul Hasan
+            </div>
+            <div style="font-size: 12px; color: #888">PROFESSOR, CSE</div>
+          </div>
+          <div class="avatar">M</div>
+        </div>
+      </header>
+
+      <div class="page-container">
+        <div class="layout-split">
+          <!-- Left: TA List -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Active Teaching Assistants</h3>
+              <span class="badge badge-pending">Fall 2026</span>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Course</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">AH</div>
+                      <div>
+                        <div class="student-name">Ashfaq Hossain</div>
+                        <div class="student-id">011211155</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="font-size: 13px">Web Programming</td>
+                  <td><span class="badge badge-completed">Reviewed</span></td>
+                  <td>
+                    <button
+                      class="btn btn-outline"
+                      onclick="openReview('Ashfaq Hossain')"
+                    >
+                      View Review
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">SJ</div>
+                      <div>
+                        <div class="student-name">Sadia Jahan</div>
+                        <div class="student-id">011211244</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="font-size: 13px">Database Systems</td>
+                  <td><span class="badge badge-pending">Pending</span></td>
+                  <td>
+                    <button
+                      class="btn btn-outline"
+                      style="border-color: #17437a; color: #17437a"
+                      onclick="openReview('Sadia Jahan')"
+                    >
+                      Write Review
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="student-info">
+                      <div class="student-initials">RA</div>
+                      <div>
+                        <div class="student-name">Rafiq Ahmed</div>
+                        <div class="student-id">011211099</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="font-size: 13px">Data Structures</td>
+                  <td><span class="badge badge-pending">Pending</span></td>
+                  <td>
+                    <button
+                      class="btn btn-outline"
+                      style="border-color: #17437a; color: #17437a"
+                      onclick="openReview('Rafiq Ahmed')"
+                    >
+                      Write Review
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Right: Review Form -->
+          <div class="review-panel" id="reviewPanel">
+            <div class="empty-state" id="emptyState">
+              <span>📝</span>
+              <p>
+                Select a Teaching Assistant from the list to write or view their
+                performance review.
+              </p>
+            </div>
+
+            <div id="formContent" style="display: none">
+              <div class="card-header">
+                <h3>Submit Review for <span id="taName"></span></h3>
+              </div>
+
+              <div class="form-group">
+                <label>Overall Rating</label>
+                <div class="rating-stars">
+                  <span>★</span><span>★</span><span>★</span><span>★</span
+                  ><span style="color: #ddd">★</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Punctuality & Reliability</label>
+                <select class="form-control">
+                  <option>Excellent - Always on time</option>
+                  <option>Good - Mostly reliable</option>
+                  <option>Average - Occasionally late</option>
+                  <option>Poor - Frequently absent</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Subject Knowledge</label>
+                <select class="form-control">
+                  <option>Excellent - Strong grasp of concepts</option>
+                  <option>Good - Solid understanding</option>
+                  <option>Average - Needs minor improvement</option>
+                  <option>Poor - Struggles with concepts</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Detailed Feedback</label>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Write any specific comments about their performance..."
+                ></textarea>
+              </div>
+
+              <button
+                class="btn btn-primary"
+                onclick="alert('Review submitted successfully!')"
+              >
+                Submit Review
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function openReview(name) {
+        document.getElementById("emptyState").style.display = "none";
+        document.getElementById("formContent").style.display = "block";
+        document.getElementById("taName").innerText = name;
+      }
+    </script>
+  </body>
+</html>
