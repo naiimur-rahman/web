@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Meridian TA Hiring</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">M</div>
+      <div class="brand-text">
+        <span class="name">Meridian TA Hiring</span>
+        <span class="sub">Dept. of Computer Science</span>
+      </div>
+    </div>
+
+    <ul class="pipeline-nav">
+      <li><a href="admin-dashboard.html" class="active"><span class="step-dot"></span>Dashboard</a></li>
+      <li><a href="create-vacancy.html"><span class="step-num">01</span>Post a vacancy</a></li>
+      <li><a href="shortlist-candidates.html"><span class="step-num">02</span>Shortlist candidates</a></li>
+      <li><a href="appointment-letter.html"><span class="step-num">03</span>Appointment letters</a></li>
+    </ul>
+
+    <div class="sidebar-user">
+      <div class="avatar">AK</div>
+      <div class="who">
+        <span class="n">Dr. Ayesha Karim</span>
+        <span class="r">Hiring coordinator</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="page-head">
+      <div>
+        <h1>Good afternoon, Dr. Karim</h1>
+        <p class="lede">Here's where things stand across every TA position this term.</p>
+      </div>
+      <div class="head-actions">
+        <a href="create-vacancy.html" class="btn btn-brass">+ Post new vacancy</a>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="figure">6</div>
+        <div class="label">Open vacancies</div>
+        <div class="delta up">2 posted this week</div>
+      </div>
+      <div class="stat-card">
+        <div class="figure">34</div>
+        <div class="label">Applications awaiting review</div>
+        <div class="delta flag">9 older than 5 days</div>
+      </div>
+      <div class="stat-card">
+        <div class="figure">12</div>
+        <div class="label">Candidates shortlisted</div>
+        <div class="delta up">Across 4 courses</div>
+      </div>
+      <div class="stat-card">
+        <div class="figure">5</div>
+        <div class="label">Appointment letters issued</div>
+        <div class="delta up">All accepted so far</div>
+      </div>
+    </div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Active vacancies</h2>
+        <span class="hint">Sorted by application deadline</span>
+      </div>
+      <div class="panel-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Positions</th>
+              <th>Applicants</th>
+              <th>Deadline</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="cell-primary">CS 201 — Data Structures</span>
+                <span class="cell-sub">Fall 2026 · 2nd year course</span>
+              </td>
+              <td>3</td>
+              <td>14</td>
+              <td>Sep 18, 2026</td>
+              <td><span class="pill pill-review">Reviewing</span></td>
+              <td><a href="shortlist-candidates.html" class="btn-text">Shortlist →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="cell-primary">CS 340 — Operating Systems</span>
+                <span class="cell-sub">Fall 2026 · 3rd year course</span>
+              </td>
+              <td>2</td>
+              <td>9</td>
+              <td>Sep 20, 2026</td>
+              <td><span class="pill pill-review">Reviewing</span></td>
+              <td><a href="shortlist-candidates.html" class="btn-text">Shortlist →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="cell-primary">MATH 150 — Calculus I</span>
+                <span class="cell-sub">Fall 2026 · 1st year course</span>
+              </td>
+              <td>4</td>
+              <td>11</td>
+              <td>Sep 22, 2026</td>
+              <td><span class="pill pill-open">Accepting applicants</span></td>
+              <td><a href="create-vacancy.html" class="btn-text">Edit →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="cell-primary">CS 115 — Intro to Programming</span>
+                <span class="cell-sub">Fall 2026 · 1st year course</span>
+              </td>
+              <td>3</td>
+              <td>0</td>
+              <td>Sep 30, 2026</td>
+              <td><span class="pill pill-closed">Draft</span></td>
+              <td><a href="create-vacancy.html" class="btn-text">Continue →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Recent activity</h2>
+        <span class="hint">Last 24 hours</span>
+      </div>
+      <div class="panel-body">
+        <table>
+          <tbody>
+            <tr>
+              <td class="cell-primary" style="width:220px;">10:42 AM</td>
+              <td>Appointment letter for <strong>Nabila Sultana</strong> (CS 201) was generated and emailed.</td>
+            </tr>
+            <tr>
+              <td class="cell-primary" style="width:220px;">9:15 AM</td>
+              <td><strong>Tanvir Ahmed</strong> was moved to the shortlist for MATH 150.</td>
+            </tr>
+            <tr>
+              <td class="cell-primary" style="width:220px;">Yesterday, 4:50 PM</td>
+              <td>New vacancy <strong>CS 340 — Operating Systems</strong> was published.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post a Vacancy · Meridian TA Hiring</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">M</div>
+      <div class="brand-text">
+        <span class="name">Meridian TA Hiring</span>
+        <span class="sub">Dept. of Computer Science</span>
+      </div>
+    </div>
+
+    <ul class="pipeline-nav">
+      <li><a href="admin-dashboard.html"><span class="step-dot"></span>Dashboard</a></li>
+      <li><a href="create-vacancy.html" class="active"><span class="step-num">01</span>Post a vacancy</a></li>
+      <li><a href="shortlist-candidates.html"><span class="step-num">02</span>Shortlist candidates</a></li>
+      <li><a href="appointment-letter.html"><span class="step-num">03</span>Appointment letters</a></li>
+    </ul>
+
+    <div class="sidebar-user">
+      <div class="avatar">AK</div>
+      <div class="who">
+        <span class="n">Dr. Ayesha Karim</span>
+        <span class="r">Hiring coordinator</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="page-head">
+      <div>
+        <h1>Post a new TA position</h1>
+        <p class="lede">Fill in the course details, eligibility and terms. You can save a draft and come back before publishing.</p>
+      </div>
+    </div>
+
+    <div class="stage-tracker">
+      <div class="stage is-current">
+        <span class="num">1</span>
+        <span><span class="label">Post vacancy</span><span class="meta">In progress</span></span>
+      </div>
+      <div class="stage">
+        <span class="num">2</span>
+        <span><span class="label">Shortlist candidates</span><span class="meta">Waiting</span></span>
+      </div>
+      <div class="stage">
+        <span class="num">3</span>
+        <span><span class="label">Generate appointment</span><span class="meta">Waiting</span></span>
+      </div>
+    </div>
+
+    <form class="panel" onsubmit="return false;">
+      <div class="panel-body" style="padding-top:22px;">
+
+        <fieldset>
+          <legend>Course &amp; position</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="course-code">Course code</label>
+              <input type="text" id="course-code" placeholder="e.g. CS 201" value="CS 201">
+            </div>
+            <div class="field">
+              <label for="course-title">Course title</label>
+              <input type="text" id="course-title" placeholder="e.g. Data Structures" value="Data Structures">
+            </div>
+            <div class="field">
+              <label for="term">Term</label>
+              <select id="term">
+                <option>Fall 2026</option>
+                <option>Spring 2027</option>
+                <option>Summer 2027</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="positions">Number of positions</label>
+              <input type="number" id="positions" min="1" value="3">
+            </div>
+            <div class="field">
+              <label for="hours">Weekly hours</label>
+              <input type="number" id="hours" min="1" value="10">
+            </div>
+            <div class="field">
+              <label for="stipend">Monthly stipend (BDT)</label>
+              <input type="number" id="stipend" min="0" step="500" value="8000">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Eligibility</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="cgpa">Minimum CGPA</label>
+              <input type="text" id="cgpa" value="3.50">
+            </div>
+            <div class="field">
+              <label for="year">Minimum year of study</label>
+              <select id="year">
+                <option>2nd year</option>
+                <option>3rd year</option>
+                <option>4th year</option>
+                <option>Graduate student</option>
+              </select>
+            </div>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="prereq" checked>
+            <label for="prereq" style="margin:0; font-weight:400;">Applicant must have completed this course with a grade of B+ or higher</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="priority">
+            <label for="priority" style="margin:0; font-weight:400;">Give priority to students with prior TA experience</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Responsibilities &amp; timeline</legend>
+          <div class="field span-2">
+            <label for="responsibilities">Responsibilities</label>
+            <textarea id="responsibilities">Lead two weekly lab sections, hold 3 office hours, grade assignments and quizzes within 5 days of submission, and support the instructor during exam invigilation.</textarea>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="deadline">Application deadline</label>
+              <input type="date" id="deadline" value="2026-09-18">
+            </div>
+            <div class="field">
+              <label for="start">Position start date</label>
+              <input type="date" id="start" value="2026-09-29">
+            </div>
+          </div>
+        </fieldset>
+
+      </div>
+      <div class="panel-body" style="padding-top:0;">
+        <div class="form-actions">
+          <a href="admin-dashboard.html" class="btn btn-ghost">Cancel</a>
+          <button type="button" class="btn btn-ghost">Save as draft</button>
+          <a href="shortlist-candidates.html" class="btn btn-brass">Publish vacancy</a>
+        </div>
+      </div>
+    </form>
+
+  </main>
+</div>
+</body>
+</html>

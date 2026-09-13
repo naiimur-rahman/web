@@ -363,164 +363,164 @@ td {
 }
 
 
-.shortlist-ext-1 {
+.shortlist-style-1 {
     font-size: 14px;
 }
 
-.shortlist-ext-2 {
+.shortlist-style-2 {
     color: #666;
 }
 
-.shortlist-ext-3 {
+.shortlist-style-3 {
     margin-bottom: 15px;
 }
 
-.shortlist-ext-4 {
+.shortlist-style-4 {
     text-align: right;
 }
 
-.shortlist-ext-5 {
+.shortlist-style-5 {
     font-weight: 600; font-size: 14px;
 }
 
-.shortlist-ext-6 {
+.shortlist-style-6 {
     font-size: 12px; color: #888;
 }
 
-.shortlist-ext-7 {
+.shortlist-style-7 {
     padding: 25px 40px; margin-bottom: 30px;
 }
 
-.shortlist-ext-8 {
+.shortlist-style-8 {
     font-size: 24px;
 }
 
-.shortlist-ext-9 {
+.shortlist-style-9 {
     color: white; font-weight: bold;
 }
 
-.shortlist-ext-10 {
+.shortlist-style-10 {
     display: flex; align-items: center; gap: 15px; margin-bottom: 25px;
 }
 
-.shortlist-ext-11 {
+.shortlist-style-11 {
     width: 60px; height: 60px; background: #17437a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;
 }
 
-.shortlist-ext-12 {
+.shortlist-style-12 {
     color: #17437a; font-size: 16px;
 }
 
-.shortlist-ext-13 {
+.shortlist-style-13 {
     color: #666; font-size: 12px; text-transform: uppercase;
 }
 
-.shortlist-ext-14 {
+.shortlist-style-14 {
     margin-bottom: 30px; line-height: 1.8;
 }
 
-.shortlist-ext-15 {
+.shortlist-style-15 {
     display: flex; justify-content: space-between;
 }
 
-.shortlist-ext-16 {
+.shortlist-style-16 {
     color: #888;
 }
 
-.shortlist-ext-17 {
+.shortlist-style-17 {
     font-weight: 600; color: #0056b3;
 }
 
-.shortlist-ext-18 {
+.shortlist-style-18 {
     font-weight: 600;
 }
 
-.shortlist-ext-19 {
+.shortlist-style-19 {
     border-top: 1px dashed #ccc; padding-top: 20px;
 }
 
-.shortlist-ext-20 {
+.shortlist-style-20 {
     display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
 }
 
-.shortlist-ext-21 {
+.shortlist-style-21 {
     font-weight: 600; color: #333;
 }
 
-.shortlist-ext-22 {
+.shortlist-style-22 {
     background: #eef2f6; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: bold;
 }
 
-.shortlist-ext-23 {
+.shortlist-style-23 {
     display: flex; align-items: center; justify-content: space-between; padding: 10px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;
 }
 
-.shortlist-ext-24 {
+.shortlist-style-24 {
     gap: 15px;
     padding: 12px 15px;
 }
 
-.shortlist-ext-25 {
+.shortlist-style-25 {
     width: 30px; height: 30px; font-size: 10px;
 }
 
-.shortlist-ext-26 {
+.shortlist-style-26 {
     font-size: 13px;
 }
 
-.shortlist-ext-27 {
+.shortlist-style-27 {
     color: #2e7d32; font-weight: bold;
 }
 
-.shortlist-ext-28 {
+.shortlist-style-28 {
     display: flex; align-items: center; justify-content: space-between; padding: 10px; border: 1px solid #eee; border-radius: 8px;
 }
 
-.shortlist-ext-29 {
+.shortlist-style-29 {
     width: 30px; height: 30px; font-size: 10px; background: #0056b3; color: white;
 }
 
-.shortlist-ext-30 {
+.shortlist-style-30 {
     display: flex; gap: 15px;
     padding: 12px 15px; align-items: center;
 }
 
-.shortlist-ext-31 {
+.shortlist-style-31 {
     font-size: 13px; color: #666;
 }
 
-.shortlist-ext-32 {
+.shortlist-style-32 {
     color: #0056b3; font-weight: bold;
 }
 
-.shortlist-ext-33 {
+.shortlist-style-33 {
     background: #e8f5e9; color: #2e7d32; border: 1px solid #2e7d32;
 }
 
-.shortlist-ext-34 {
+.shortlist-style-34 {
     padding: 6px 12px; font-size: 12px;
 }
 
-.shortlist-ext-35 {
+.shortlist-style-35 {
     color: #999;
 }
 
-.shortlist-ext-36 {
+.shortlist-style-36 {
     color: #999; font-weight: bold;
 }
 
-.shortlist-ext-37 {
+.shortlist-style-37 {
     background: #ffebee; color: #c62828;
 }
 
-.shortlist-ext-38 {
+.shortlist-style-38 {
     background: #eee; color: #999; cursor: not-allowed; padding: 6px 12px; font-size: 12px;
 }
 
-.shortlist-ext-39 {
+.shortlist-style-39 {
     padding: 20px; background: #fafbfc; border-top: 1px solid #f0f0f0; display: flex; justify-content: flex-end; gap: 15px;
 }
 
-.shortlist-ext-40 {
+.shortlist-style-40 {
     background: #1976d2;
 }

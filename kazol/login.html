@@ -122,9 +122,11 @@
           window.location.href = "../naimur/dashboard.html";
         } else if (user === "student" && pass === "1234") {
           window.location.href = "../tanjim/student_dashboard.html";
+        } else if (user === "admin" && pass === "1234") {
+          window.location.href = "../bappy/admin-dashboard.html";
         } else {
           alert(
-            "Invalid credentials. Please use 'faculty' / '1234' or 'student' / '1234'.",
+            "Invalid credentials. Please use 'faculty' / '1234', 'student' / '1234', or 'admin' / '1234'.",
           );
         }
       }

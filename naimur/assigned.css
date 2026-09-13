@@ -365,131 +365,131 @@ td {
 }
 
 
-.assigned-ext-1 {
+.assigned-style-1 {
     font-size: 14px;
 }
 
-.assigned-ext-2 {
+.assigned-style-2 {
     color: #666;
 }
 
-.assigned-ext-3 {
+.assigned-style-3 {
     margin-bottom: 15px;
 }
 
-.assigned-ext-4 {
+.assigned-style-4 {
     color: white; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;
 }
 
-.assigned-ext-5 {
+.assigned-style-5 {
     display: flex; flex-direction: column; gap: 20px;
 }
 
-.assigned-ext-6 {
+.assigned-style-6 {
     text-align: center;
 }
 
-.assigned-ext-7 {
+.assigned-style-7 {
     width: 80px; height: 80px; background: #17437a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 15px; position: relative;
 }
 
-.assigned-ext-8 {
+.assigned-style-8 {
     position: absolute; bottom: 0; right: 0; width: 15px; height: 15px; background: #2e7d32; border-radius: 50%; border: 2px solid white;
 }
 
-.assigned-ext-9 {
+.assigned-style-9 {
     color: #17437a; margin-bottom: 15px;
 }
 
-.assigned-ext-10 {
+.assigned-style-10 {
     background: #17437a; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 25px;
 }
 
-.assigned-ext-11 {
+.assigned-style-11 {
     display: flex; justify-content: space-between; border-top: 1px solid #eee; padding-top: 15px; text-align: left;
 }
 
-.assigned-ext-12 {
+.assigned-style-12 {
     font-size: 11px; color: #888; text-transform: uppercase;
 }
 
-.assigned-ext-13 {
+.assigned-style-13 {
     font-weight: 600; color: #0056b3;
 }
 
-.assigned-ext-14 {
+.assigned-style-14 {
     font-weight: 600;
 }
 
-.assigned-ext-15 {
+.assigned-style-15 {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.assigned-ext-16 {
+.assigned-style-16 {
     font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 5px;
 }
 
-.assigned-ext-17 {
+.assigned-style-17 {
     font-size: 20px; font-weight: bold; color: #17437a;
 }
 
-.assigned-ext-18 {
+.assigned-style-18 {
     font-size: 24px; color: #bbccdd;
 }
 
-.assigned-ext-19 {
+.assigned-style-19 {
     font-size: 20px; font-weight: bold; color: #2e7d32;
 }
 
-.assigned-ext-20 {
+.assigned-style-20 {
     font-size: 24px; color: #c8e6c9;
 }
 
-.assigned-ext-21 {
+.assigned-style-21 {
     font-size: 20px; font-weight: bold; color: white;
 }
 
-.assigned-ext-22 {
+.assigned-style-22 {
     font-size: 24px; color: #ffe0b2;
 }
 
-.assigned-ext-23 {
+.assigned-style-23 {
     height: fit-content;
 }
 
-.assigned-ext-24 {
+.assigned-style-24 {
     display: flex; align-items: center; gap: 15px;
     padding: 12px 15px;
 }
 
-.assigned-ext-25 {
+.assigned-style-25 {
     color: #1976d2;
 }
 
-.assigned-ext-26 {
+.assigned-style-26 {
     color: #17437a;
 }
 
-.assigned-ext-27 {
+.assigned-style-27 {
     display: flex; gap: 15px;
 }
 
-.assigned-ext-28 {
+.assigned-style-28 {
     background: none; border: none; cursor: pointer; color: #666;
 }
 
-.assigned-ext-29 {
+.assigned-style-29 {
     color: #0056b3;
 }
 
-.assigned-ext-30 {
+.assigned-style-30 {
     background: #e8f5e9; color: #2e7d32;
 }
 
-.assigned-ext-31 {
+.assigned-style-31 {
     padding: 20px; background: #fafbfc; border-top: 1px solid #f0f0f0; display: flex; justify-content: flex-end; gap: 15px;
 }
 
-.assigned-ext-32 {
+.assigned-style-32 {
     border-color: #1976d2; color: #1976d2;
 }

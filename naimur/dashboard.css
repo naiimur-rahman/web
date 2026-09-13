@@ -363,85 +363,85 @@ td {
 }
 
 
-.dashboard-ext-1 {
+.dashboard-style-1 {
     font-size: 14px;
 }
 
-.dashboard-ext-2 {
+.dashboard-style-2 {
     color: #666;
 }
 
-.dashboard-ext-3 {
+.dashboard-style-3 {
     margin-bottom: 15px;
 }
 
-.dashboard-ext-4 {
+.dashboard-style-4 {
     text-align: right;
 }
 
-.dashboard-ext-5 {
+.dashboard-style-5 {
     font-weight: 600; font-size: 14px;
 }
 
-.dashboard-ext-6 {
+.dashboard-style-6 {
     font-size: 12px; color: #888;
 }
 
-.dashboard-ext-7 {
+.dashboard-style-7 {
     position: absolute; right: 40px; top: 40px; background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 12px; display: flex; align-items: center; gap: 15px;
 }
 
-.dashboard-ext-8 {
+.dashboard-style-8 {
     font-size: 24px;
 }
 
-.dashboard-ext-9 {
+.dashboard-style-9 {
     font-size: 12px; opacity: 0.8;
 }
 
-.dashboard-ext-10 {
+.dashboard-style-10 {
     font-weight: bold; font-size: 16px;
 }
 
-.dashboard-ext-11 {
+.dashboard-style-11 {
     background: #eef2f6; color: #17437a;
 }
 
-.dashboard-ext-12 {
+.dashboard-style-12 {
     background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;
 }
 
-.dashboard-ext-13 {
+.dashboard-style-13 {
     border-bottom: 4px solid #f28b30;
 }
 
-.dashboard-ext-14 {
+.dashboard-style-14 {
     background: #fff3e0; color: white;
 }
 
-.dashboard-ext-15 {
+.dashboard-style-15 {
     color: #666; font-size: 12px;
 }
 
-.dashboard-ext-16 {
+.dashboard-style-16 {
     background: #f3e5f5; color: #7b1fa2;
 }
 
-.dashboard-ext-17 {
+.dashboard-style-17 {
     background: #fff8e1; color: #ff8f00;
 }
 
-.dashboard-ext-18 {
+.dashboard-style-18 {
     grid-column: span 2;
 }
 
-.dashboard-ext-19 {
+.dashboard-style-19 {
     font-weight: 600;
 }
 .stat-box-blue { background-color: #2a7ac9 !important; color: white !important; border: none !important; }
 .stat-box-blue * { color: white !important; }
 .stat-box-blue .stat-icon { background: rgba(255,255,255,0.2) !important; color: white !important; }
-.stat-box-blue span.dashboard-ext-12 { background: rgba(255,255,255,0.2) !important; color: white !important; }
+.stat-box-blue span.dashboard-style-12 { background: rgba(255,255,255,0.2) !important; color: white !important; }
 
 .stat-box-green { background-color: #3b9b47 !important; color: white !important; border: none !important; }
 .stat-box-green * { color: white !important; }

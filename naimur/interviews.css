@@ -363,115 +363,115 @@ td {
 }
 
 
-.interviews-ext-1 {
+.interviews-style-1 {
     font-size: 14px;
 }
 
-.interviews-ext-2 {
+.interviews-style-2 {
     color: #666;
 }
 
-.interviews-ext-3 {
+.interviews-style-3 {
     margin-bottom: 15px;
 }
 
-.interviews-ext-4 {
+.interviews-style-4 {
     background: #1976d2;
 }
 
-.interviews-ext-5 {
+.interviews-style-5 {
     display: flex; gap: 30px; margin-bottom: 30px;
 }
 
-.interviews-ext-6 {
+.interviews-style-6 {
     flex: 2; display: flex; align-items: center; gap: 20px;
 }
 
-.interviews-ext-7 {
+.interviews-style-7 {
     width: 80px; height: 80px; background: #17437a; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; position: relative;
 }
 
-.interviews-ext-8 {
+.interviews-style-8 {
     position: absolute; bottom: -5px; right: -5px; background: #2e7d32; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; border: 2px solid white;
 }
 
-.interviews-ext-9 {
+.interviews-style-9 {
     color: #17437a; font-size: 18px; margin-bottom: 5px;
 }
 
-.interviews-ext-10 {
+.interviews-style-10 {
     color: #666; font-size: 13px; margin-bottom: 15px;
 }
 
-.interviews-ext-11 {
+.interviews-style-11 {
     display: flex; gap: 30px;
 }
 
-.interviews-ext-12 {
+.interviews-style-12 {
     font-size: 11px; color: #888; text-transform: uppercase;
 }
 
-.interviews-ext-13 {
+.interviews-style-13 {
     font-weight: 600; color: #1976d2;
 }
 
-.interviews-ext-14 {
+.interviews-style-14 {
     font-weight: 600;
 }
 
-.interviews-ext-15 {
+.interviews-style-15 {
     flex: 1; background: #17437a; color: white;
 }
 
-.interviews-ext-16 {
+.interviews-style-16 {
     font-size: 16px; margin-bottom: 10px;
 }
 
-.interviews-ext-17 {
+.interviews-style-17 {
     font-size: 13px; color: #bbccdd; margin-bottom: 20px;
 }
 
-.interviews-ext-18 {
+.interviews-style-18 {
     display: flex; align-items: flex-end; gap: 15px;
     padding: 12px 15px;
 }
 
-.interviews-ext-19 {
+.interviews-style-19 {
     font-size: 36px; line-height: 1;
 }
 
-.interviews-ext-20 {
+.interviews-style-20 {
     font-size: 12px; color: #bbccdd; margin-bottom: 5px;
 }
 
-.interviews-ext-21 {
+.interviews-style-21 {
     width: 100%; height: 4px; background: rgba(255,255,255,0.2); margin-top: 15px; border-radius: 2px;
 }
 
-.interviews-ext-22 {
+.interviews-style-22 {
     width: 45%; height: 100%; background: #1976d2; border-radius: 2px;
 }
 
-.interviews-ext-23 {
+.interviews-style-23 {
     padding: 8px 15px; border: 1px solid #ddd; border-radius: 20px; outline: none; background: #f8f9fa;
 }
 
-.interviews-ext-24 {
+.interviews-style-24 {
     font-size: 12px; color: #888;
 }
 
-.interviews-ext-25 {
+.interviews-style-25 {
     color: #1976d2; font-weight: bold;
 }
 
-.interviews-ext-26 {
+.interviews-style-26 {
     background: #e3f2fd; color: #1976d2;
 }
 
-.interviews-ext-27 {
+.interviews-style-27 {
     background: #e8f5e9; color: #2e7d32;
 }
 
-.interviews-ext-28 {
+.interviews-style-28 {
     color: #2e7d32; font-weight: bold;
 }
