@@ -87,6 +87,7 @@ a {
     background-color: #fff0f0;
     border-radius: 8px;
 }
+
 .logout-btn {
     color: #d32f2f;
     display: flex;
@@ -122,6 +123,7 @@ a {
     font-size: 20px;
     color: #17437a;
 }
+
 .header-title p {
     font-size: 13px;
     color: #666;
@@ -161,7 +163,7 @@ a {
     background: white;
     border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     border: 1px solid #eff1f5;
 }
 
@@ -206,7 +208,7 @@ a {
     background: white;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     border: 1px solid #eff1f5;
 }
 
@@ -246,7 +248,7 @@ a {
 .table-container {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     border: 1px solid #eff1f5;
     overflow: hidden;
 }
@@ -308,6 +310,7 @@ td {
     font-weight: 600;
     color: #333;
 }
+
 .student-id {
     font-size: 12px;
     color: #888;
@@ -320,10 +323,26 @@ td {
     font-size: 12px;
     font-weight: 600;
 }
-.badge-pending { background: #fff8e1; color: #ff8f00; }
-.badge-shortlisted { background: #e3f2fd; color: #1976d2; }
-.badge-interview { background: #f3e5f5; color: #7b1fa2; }
-.badge-completed { background: #e8f5e9; color: #388e3c; }
+
+.badge-pending {
+    background: #fff8e1;
+    color: #ff8f00;
+}
+
+.badge-shortlisted {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.badge-interview {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.badge-completed {
+    background: #e8f5e9;
+    color: #388e3c;
+}
 
 /* Buttons */
 .btn {
@@ -340,6 +359,7 @@ td {
     background-color: #17437a;
     color: white;
 }
+
 .btn-primary:hover {
     background-color: white;
 }
@@ -349,6 +369,7 @@ td {
     background: white;
     color: #333;
 }
+
 .btn-outline:hover {
     background: #f5f5f5;
 }
@@ -358,6 +379,7 @@ td {
     font-weight: 600;
     font-size: 13px;
 }
+
 .action-link:hover {
     text-decoration: underline;
 }
@@ -380,15 +402,25 @@ td {
 }
 
 .dashboard-style-5 {
-    font-weight: 600; font-size: 14px;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .dashboard-style-6 {
-    font-size: 12px; color: #888;
+    font-size: 12px;
+    color: #888;
 }
 
 .dashboard-style-7 {
-    position: absolute; right: 40px; top: 40px; background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 12px; display: flex; align-items: center; gap: 15px;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .dashboard-style-8 {
@@ -396,19 +428,27 @@ td {
 }
 
 .dashboard-style-9 {
-    font-size: 12px; opacity: 0.8;
+    font-size: 12px;
+    opacity: 0.8;
 }
 
 .dashboard-style-10 {
-    font-weight: bold; font-size: 16px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .dashboard-style-11 {
-    background: #eef2f6; color: #17437a;
+    background: #eef2f6;
+    color: #17437a;
 }
 
 .dashboard-style-12 {
-    background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .dashboard-style-13 {
@@ -416,19 +456,23 @@ td {
 }
 
 .dashboard-style-14 {
-    background: #fff3e0; color: white;
+    background: #fff3e0;
+    color: white;
 }
 
 .dashboard-style-15 {
-    color: #666; font-size: 12px;
+    color: #666;
+    font-size: 12px;
 }
 
 .dashboard-style-16 {
-    background: #f3e5f5; color: #7b1fa2;
+    background: #f3e5f5;
+    color: #7b1fa2;
 }
 
 .dashboard-style-17 {
-    background: #fff8e1; color: #ff8f00;
+    background: #fff8e1;
+    color: #ff8f00;
 }
 
 .dashboard-style-18 {
@@ -438,19 +482,68 @@ td {
 .dashboard-style-19 {
     font-weight: 600;
 }
-.stat-box-blue { background-color: #2a7ac9 !important; color: white !important; border: none !important; }
-.stat-box-blue * { color: white !important; }
-.stat-box-blue .stat-icon { background: rgba(255,255,255,0.2) !important; color: white !important; }
-.stat-box-blue span.dashboard-style-12 { background: rgba(255,255,255,0.2) !important; color: white !important; }
 
-.stat-box-green { background-color: #3b9b47 !important; color: white !important; border: none !important; }
-.stat-box-green * { color: white !important; }
-.stat-box-green .stat-icon { background: rgba(255,255,255,0.2) !important; color: white !important; }
+.stat-box-blue {
+    background-color: #2a7ac9 !important;
+    color: white !important;
+    border: none !important;
+}
 
-.stat-box-orange { background-color: #f1861c !important; color: white !important; border: none !important; }
-.stat-box-orange * { color: white !important; }
-.stat-box-orange .stat-icon { background: rgba(255,255,255,0.2) !important; color: white !important; }
+.stat-box-blue * {
+    color: white !important;
+}
 
-.stat-box-purple { background-color: #8b26a6 !important; color: white !important; border: none !important; }
-.stat-box-purple * { color: white !important; }
-.stat-box-purple .stat-icon { background: rgba(255,255,255,0.2) !important; color: white !important; }
+.stat-box-blue .stat-icon {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.stat-box-blue span.dashboard-style-12 {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.stat-box-green {
+    background-color: #3b9b47 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.stat-box-green * {
+    color: white !important;
+}
+
+.stat-box-green .stat-icon {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.stat-box-orange {
+    background-color: #f1861c !important;
+    color: white !important;
+    border: none !important;
+}
+
+.stat-box-orange * {
+    color: white !important;
+}
+
+.stat-box-orange .stat-icon {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+.stat-box-purple {
+    background-color: #8b26a6 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.stat-box-purple * {
+    color: white !important;
+}
+
+.stat-box-purple .stat-icon {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}

@@ -87,6 +87,7 @@ a {
     background-color: #fff0f0;
     border-radius: 8px;
 }
+
 .logout-btn {
     color: #d32f2f;
     display: flex;
@@ -122,6 +123,7 @@ a {
     font-size: 20px;
     color: #17437a;
 }
+
 .header-title p {
     font-size: 13px;
     color: #666;
@@ -161,7 +163,7 @@ a {
     background: white;
     border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     border: 1px solid #eff1f5;
 }
 
@@ -206,7 +208,7 @@ a {
     background: white;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     border: 1px solid #eff1f5;
 }
 
@@ -246,7 +248,7 @@ a {
 .table-container {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     border: 1px solid #eff1f5;
     overflow: hidden;
 }
@@ -308,6 +310,7 @@ td {
     font-weight: 600;
     color: #333;
 }
+
 .student-id {
     font-size: 12px;
     color: #888;
@@ -322,10 +325,26 @@ td {
     white-space: nowrap;
     display: inline-block;
 }
-.badge-pending { background: #fff8e1; color: #ff8f00; }
-.badge-shortlisted { background: #e3f2fd; color: #1976d2; }
-.badge-interview { background: #f3e5f5; color: #7b1fa2; }
-.badge-completed { background: #e8f5e9; color: #388e3c; }
+
+.badge-pending {
+    background: #fff8e1;
+    color: #ff8f00;
+}
+
+.badge-shortlisted {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.badge-interview {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.badge-completed {
+    background: #e8f5e9;
+    color: #388e3c;
+}
 
 /* Buttons */
 .btn {
@@ -342,6 +361,7 @@ td {
     background-color: #17437a;
     color: white;
 }
+
 .btn-primary:hover {
     background-color: white;
 }
@@ -351,6 +371,7 @@ td {
     background: white;
     color: #333;
 }
+
 .btn-outline:hover {
     background: #f5f5f5;
 }
@@ -360,6 +381,7 @@ td {
     font-weight: 600;
     font-size: 13px;
 }
+
 .action-link:hover {
     text-decoration: underline;
 }
@@ -378,11 +400,17 @@ td {
 }
 
 .assigned-style-4 {
-    color: white; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
 }
 
 .assigned-style-5 {
-    display: flex; flex-direction: column; gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .assigned-style-6 {
@@ -390,31 +418,62 @@ td {
 }
 
 .assigned-style-7 {
-    width: 80px; height: 80px; background: #17437a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 15px; position: relative;
+    width: 80px;
+    height: 80px;
+    background: #17437a;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 15px;
+    position: relative;
 }
 
 .assigned-style-8 {
-    position: absolute; bottom: 0; right: 0; width: 15px; height: 15px; background: #2e7d32; border-radius: 50%; border: 2px solid white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background: #2e7d32;
+    border-radius: 50%;
+    border: 2px solid white;
 }
 
 .assigned-style-9 {
-    color: #17437a; margin-bottom: 15px;
+    color: #17437a;
+    margin-bottom: 15px;
 }
 
 .assigned-style-10 {
-    background: #17437a; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 25px;
+    background: #17437a;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 25px;
 }
 
 .assigned-style-11 {
-    display: flex; justify-content: space-between; border-top: 1px solid #eee; padding-top: 15px; text-align: left;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    text-align: left;
 }
 
 .assigned-style-12 {
-    font-size: 11px; color: #888; text-transform: uppercase;
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
 }
 
 .assigned-style-13 {
-    font-weight: 600; color: #0056b3;
+    font-weight: 600;
+    color: #0056b3;
 }
 
 .assigned-style-14 {
@@ -422,35 +481,49 @@ td {
 }
 
 .assigned-style-15 {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .assigned-style-16 {
-    font-size: 11px; color: #888; text-transform: uppercase; margin-bottom: 5px;
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
 .assigned-style-17 {
-    font-size: 20px; font-weight: bold; color: #17437a;
+    font-size: 20px;
+    font-weight: bold;
+    color: #17437a;
 }
 
 .assigned-style-18 {
-    font-size: 24px; color: #bbccdd;
+    font-size: 24px;
+    color: #bbccdd;
 }
 
 .assigned-style-19 {
-    font-size: 20px; font-weight: bold; color: #2e7d32;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2e7d32;
 }
 
 .assigned-style-20 {
-    font-size: 24px; color: #c8e6c9;
+    font-size: 24px;
+    color: #c8e6c9;
 }
 
 .assigned-style-21 {
-    font-size: 20px; font-weight: bold; color: white;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
 }
 
 .assigned-style-22 {
-    font-size: 24px; color: #ffe0b2;
+    font-size: 24px;
+    color: #ffe0b2;
 }
 
 .assigned-style-23 {
@@ -458,7 +531,9 @@ td {
 }
 
 .assigned-style-24 {
-    display: flex; align-items: center; gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
     padding: 12px 15px;
 }
 
@@ -471,11 +546,15 @@ td {
 }
 
 .assigned-style-27 {
-    display: flex; gap: 15px;
+    display: flex;
+    gap: 15px;
 }
 
 .assigned-style-28 {
-    background: none; border: none; cursor: pointer; color: #666;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
 }
 
 .assigned-style-29 {
@@ -483,13 +562,20 @@ td {
 }
 
 .assigned-style-30 {
-    background: #e8f5e9; color: #2e7d32;
+    background: #e8f5e9;
+    color: #2e7d32;
 }
 
 .assigned-style-31 {
-    padding: 20px; background: #fafbfc; border-top: 1px solid #f0f0f0; display: flex; justify-content: flex-end; gap: 15px;
+    padding: 20px;
+    background: #fafbfc;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
 }
 
 .assigned-style-32 {
-    border-color: #1976d2; color: #1976d2;
+    border-color: #1976d2;
+    color: #1976d2;
 }
