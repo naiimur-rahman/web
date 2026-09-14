@@ -1,66 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Post a Vacancy · Meridian TA Hiring</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Vacancy · UIU TA Hiring</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="app-shell">
-
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="brand-mark">M</div>
-      <div class="brand-text">
-        <span class="name">Meridian TA Hiring</span>
-        <span class="sub">Dept. of Computer Science</span>
-      </div>
+    <div class="sidebar-header">
+      <div class="logo-badge">UIU</div>
+      <div class="dashboard-style-2" style="font-weight: 600; font-size: 14px;">UIU TA Hiring</div>
     </div>
-
-    <ul class="pipeline-nav">
-      <li><a href="admin-dashboard.html"><span class="step-dot"></span>Dashboard</a></li>
-      <li><a href="create-vacancy.html" class="active"><span class="step-num">01</span>Post a vacancy</a></li>
-      <li><a href="shortlist-candidates.html"><span class="step-num">02</span>Shortlist candidates</a></li>
-      <li><a href="appointment-letter.html"><span class="step-num">03</span>Appointment letters</a></li>
-    </ul>
-
-    <div class="sidebar-user">
-      <div class="avatar">AK</div>
-      <div class="who">
-        <span class="n">Dr. Ayesha Karim</span>
-        <span class="r">Hiring coordinator</span>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="admin-dashboard.html">
+        <span>📊</span> Dashboard
+      </a>
+      <a class="nav-item active" href="create-vacancy.html">
+        <span>➕</span> Post a vacancy
+      </a>
+      <a class="nav-item" href="shortlist-candidates.html">
+        <span>✓</span> Shortlist candidates
+      </a>
+      <a class="nav-item" href="appointment-letter.html">
+        <span>✉️</span> Appointment letters
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="nav-item" style="margin-bottom: 15px;">
+        <span>👤</span> Dr. Ayesha Karim
       </div>
-      <a href="../index.html" class="btn" style="margin-left: auto; font-size: 11px; border: 1px solid rgba(255,255,255,0.2); color: #E9E7DF; padding: 5px 10px; background: rgba(255,255,255,0.05);">Logout</a>
+      <a href="../index.html" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
 
-  <main class="main">
-    <div class="page-head">
-      <div>
-        <h1>Post a new TA position</h1>
-        <p class="lede">Fill in the course details, eligibility and terms. You can save a draft and come back before publishing.</p>
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-header">
+      <div class="header-title">
+        <h2>Post a new TA position</h2>
+        <p>Fill in the course details, eligibility and terms. You can save a draft and come back before publishing.</p>
       </div>
-    </div>
+      <div class="header-profile">
+        <div class="dashboard-style-4">
+          <div class="dashboard-style-5">Dr. Ayesha Karim</div>
+          <div class="dashboard-style-6">HIRING COORDINATOR</div>
+        </div>
+        <div class="avatar" style="background:#17437a;">AK</div>
+      </div>
+    </header>
 
-    <div class="stage-tracker">
-      <div class="stage is-current">
-        <span class="num">1</span>
-        <span><span class="label">Post vacancy</span><span class="meta">In progress</span></span>
-      </div>
-      <div class="stage">
-        <span class="num">2</span>
-        <span><span class="label">Shortlist candidates</span><span class="meta">Waiting</span></span>
-      </div>
-      <div class="stage">
-        <span class="num">3</span>
-        <span><span class="label">Generate appointment</span><span class="meta">Waiting</span></span>
-      </div>
-    </div>
-
-    <form class="panel" onsubmit="return false;">
-      <div class="panel-body" style="padding-top:22px;">
-
+    <div class="page-container">
+      <form class="card" onsubmit="return false;" style="max-width: 900px;">
         <fieldset>
           <legend>Course &amp; position</legend>
           <div class="form-grid">
@@ -140,17 +132,13 @@
           </div>
         </fieldset>
 
-      </div>
-      <div class="panel-body" style="padding-top:0;">
-        <div class="form-actions">
-          <a href="admin-dashboard.html" class="btn btn-ghost">Cancel</a>
-          <button type="button" class="btn btn-ghost">Save as draft</button>
-          <a href="shortlist-candidates.html" class="btn btn-brass">Publish vacancy</a>
+        <div class="form-actions" style="margin-top: 30px;">
+          <a href="admin-dashboard.html" class="btn btn-outline">Cancel</a>
+          <button type="button" class="btn btn-outline">Save as draft</button>
+          <a href="shortlist-candidates.html" class="btn btn-primary">Publish vacancy</a>
         </div>
-      </div>
-    </form>
-
+      </form>
+    </div>
   </main>
-</div>
 </body>
 </html>

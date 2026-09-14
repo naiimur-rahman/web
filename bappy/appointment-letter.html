@@ -1,72 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generate Appointment Letter · Meridian TA Hiring</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Appointment Letter · UIU TA Hiring</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="app-shell">
-
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="brand-mark">M</div>
-      <div class="brand-text">
-        <span class="name">Meridian TA Hiring</span>
-        <span class="sub">Dept. of Computer Science</span>
-      </div>
+    <div class="sidebar-header">
+      <div class="logo-badge">UIU</div>
+      <div class="dashboard-style-2" style="font-weight: 600; font-size: 14px;">UIU TA Hiring</div>
     </div>
-
-    <ul class="pipeline-nav">
-      <li><a href="admin-dashboard.html"><span class="step-dot"></span>Dashboard</a></li>
-      <li><a href="create-vacancy.html"><span class="step-num">01</span>Post a vacancy</a></li>
-      <li><a href="shortlist-candidates.html"><span class="step-num">02</span>Shortlist candidates</a></li>
-      <li><a href="appointment-letter.html" class="active"><span class="step-num">03</span>Appointment letters</a></li>
-    </ul>
-
-    <div class="sidebar-user">
-      <div class="avatar">AK</div>
-      <div class="who">
-        <span class="n">Dr. Ayesha Karim</span>
-        <span class="r">Hiring coordinator</span>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="admin-dashboard.html">
+        <span>📊</span> Dashboard
+      </a>
+      <a class="nav-item" href="create-vacancy.html">
+        <span>➕</span> Post a vacancy
+      </a>
+      <a class="nav-item" href="shortlist-candidates.html">
+        <span>✓</span> Shortlist candidates
+      </a>
+      <a class="nav-item active" href="appointment-letter.html">
+        <span>✉️</span> Appointment letters
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="nav-item" style="margin-bottom: 15px;">
+        <span>👤</span> Dr. Ayesha Karim
       </div>
-      <a href="../index.html" class="btn" style="margin-left: auto; font-size: 11px; border: 1px solid rgba(255,255,255,0.2); color: #E9E7DF; padding: 5px 10px; background: rgba(255,255,255,0.05);">Logout</a>
+      <a href="../index.html" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
 
-  <main class="main">
-    <div class="page-head">
-      <div>
-        <h1>Generate appointment letter</h1>
-        <p class="lede">Confirm the details below, then generate a letter for <strong>Nabila Sultana</strong>.</p>
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-header">
+      <div class="header-title">
+        <h2>Generate appointment letter</h2>
+        <p>Confirm the details below, then generate a letter for Nabila Sultana.</p>
       </div>
-    </div>
+      <div class="header-profile">
+        <div class="dashboard-style-4">
+          <div class="dashboard-style-5">Dr. Ayesha Karim</div>
+          <div class="dashboard-style-6">HIRING COORDINATOR</div>
+        </div>
+        <div class="avatar" style="background:#17437a;">AK</div>
+      </div>
+    </header>
 
-    <div class="stage-tracker">
-      <div class="stage is-done">
-        <span class="num">✓</span>
-        <span><span class="label">Post vacancy</span><span class="meta">Published Sep 4</span></span>
-      </div>
-      <div class="stage is-done">
-        <span class="num">✓</span>
-        <span><span class="label">Shortlist candidates</span><span class="meta">2 shortlisted</span></span>
-      </div>
-      <div class="stage is-current">
-        <span class="num">3</span>
-        <span><span class="label">Generate appointment</span><span class="meta">Drafting letter</span></span>
-      </div>
-    </div>
-
-    <div class="letter-layout">
-
-      <form onsubmit="return false;">
-        <div class="panel">
-          <div class="panel-head">
-            <h2>Letter details</h2>
+    <div class="page-container">
+      <div class="letter-layout">
+        
+        <!-- Left: Form -->
+        <form class="card" onsubmit="return false;" style="padding:0;">
+          <div class="table-header-area">
+            <h3>Letter details</h3>
           </div>
-          <div class="panel-body" style="padding-top:18px;">
-
+          <div style="padding: 25px;">
             <div class="field">
               <label for="candidate">Candidate</label>
               <select id="candidate">
@@ -109,60 +102,58 @@
               Once generated, the letter is emailed to the candidate's registered address and a copy is stored under their applicant record.
             </div>
 
-            <div class="form-actions" style="justify-content:space-between;">
-              <a href="shortlist-candidates.html" class="btn btn-ghost">Back to shortlist</a>
+            <div class="form-actions" style="justify-content:space-between; margin-top: 20px;">
+              <a href="shortlist-candidates.html" class="btn btn-outline">Back to shortlist</a>
               <div style="display:flex; gap:10px;">
-                <button type="button" class="btn btn-ghost">Save draft</button>
-                <button type="button" class="btn btn-brass">Generate &amp; send</button>
+                <button type="button" class="btn btn-outline">Save draft</button>
+                <button type="button" class="btn btn-primary">Generate &amp; send</button>
               </div>
             </div>
+          </div>
+        </form>
 
+        <!-- Right: Letter Preview -->
+        <div class="letter-sheet">
+          <div class="letterhead">
+            <div>
+              <div class="uni-name">United International University</div>
+              <div class="uni-dept">Department of Computer Science</div>
+            </div>
+            <div class="uni-seal">UIU</div>
+          </div>
+
+          <div class="ref-line">Ref: UIU/CS/TA/2026/014 &nbsp;·&nbsp; Date: September 12, 2026</div>
+
+          <p>Nabila Sultana<br>Student ID 20-41032<br>B.Sc. in Computer Science, 3rd year</p>
+
+          <p>Dear Ms. Sultana,</p>
+
+          <p>
+            I am pleased to offer you the position of <strong>Teaching Assistant for CS 201 — Data Structures</strong>
+            for the Fall 2026 term. This letter confirms the terms of your appointment.
+          </p>
+
+          <p>
+            You will work <strong>10 hours per week</strong>, beginning <strong>September 29, 2026</strong> and
+            concluding <strong>December 19, 2026</strong>, at a monthly stipend of <strong>BDT 8,000</strong>,
+            disbursed at the end of each month. Your duties will include leading two weekly lab sections,
+            holding office hours, and grading assignments in a timely manner, under the supervision of
+            Dr. Ayesha Karim, Course Instructor.
+          </p>
+
+          <p>
+            Please confirm your acceptance by replying to this email no later than <strong>September 22, 2026</strong>.
+            We look forward to working with you this term.
+          </p>
+
+          <div class="sig-block">
+            <div class="sig-line"></div>
+            <p style="margin:0;">Dr. Ayesha Karim<br>Hiring Coordinator, Department of Computer Science</p>
           </div>
         </div>
-      </form>
 
-      <div class="letter-sheet">
-        <div class="letterhead">
-          <div>
-            <div class="uni-name">Meridian University</div>
-            <div class="uni-dept">Department of Computer Science</div>
-          </div>
-          <div class="uni-seal">MU</div>
-        </div>
-
-        <div class="ref-line">Ref: MU/CS/TA/2026/014 &nbsp;·&nbsp; Date: September 12, 2026</div>
-
-        <p>Nabila Sultana<br>Student ID 20-41032<br>B.Sc. in Computer Science, 3rd year</p>
-
-        <p>Dear Ms. Sultana,</p>
-
-        <p>
-          I am pleased to offer you the position of <strong>Teaching Assistant for CS 201 — Data Structures</strong>
-          for the Fall 2026 term. This letter confirms the terms of your appointment.
-        </p>
-
-        <p>
-          You will work <strong>10 hours per week</strong>, beginning <strong>September 29, 2026</strong> and
-          concluding <strong>December 19, 2026</strong>, at a monthly stipend of <strong>BDT 8,000</strong>,
-          disbursed at the end of each month. Your duties will include leading two weekly lab sections,
-          holding office hours, and grading assignments in a timely manner, under the supervision of
-          Dr. Ayesha Karim, Course Instructor.
-        </p>
-
-        <p>
-          Please confirm your acceptance by replying to this email no later than <strong>September 22, 2026</strong>.
-          We look forward to working with you this term.
-        </p>
-
-        <div class="sig-block">
-          <div class="sig-line"></div>
-          <p style="margin:0;">Dr. Ayesha Karim<br>Hiring Coordinator, Department of Computer Science</p>
-        </div>
       </div>
-
     </div>
-
   </main>
-</div>
 </body>
 </html>

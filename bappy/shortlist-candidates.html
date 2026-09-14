@@ -1,185 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shortlist Candidates · Meridian TA Hiring</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shortlist Candidates · UIU TA Hiring</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="app-shell">
-
+  <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="brand-mark">M</div>
-      <div class="brand-text">
-        <span class="name">Meridian TA Hiring</span>
-        <span class="sub">Dept. of Computer Science</span>
-      </div>
+    <div class="sidebar-header">
+      <div class="logo-badge">UIU</div>
+      <div class="dashboard-style-2" style="font-weight: 600; font-size: 14px;">UIU TA Hiring</div>
     </div>
-
-    <ul class="pipeline-nav">
-      <li><a href="admin-dashboard.html"><span class="step-dot"></span>Dashboard</a></li>
-      <li><a href="create-vacancy.html"><span class="step-num">01</span>Post a vacancy</a></li>
-      <li><a href="shortlist-candidates.html" class="active"><span class="step-num">02</span>Shortlist candidates</a></li>
-      <li><a href="appointment-letter.html"><span class="step-num">03</span>Appointment letters</a></li>
-    </ul>
-
-    <div class="sidebar-user">
-      <div class="avatar">AK</div>
-      <div class="who">
-        <span class="n">Dr. Ayesha Karim</span>
-        <span class="r">Hiring coordinator</span>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="admin-dashboard.html">
+        <span>📊</span> Dashboard
+      </a>
+      <a class="nav-item" href="create-vacancy.html">
+        <span>➕</span> Post a vacancy
+      </a>
+      <a class="nav-item active" href="shortlist-candidates.html">
+        <span>✓</span> Shortlist candidates
+      </a>
+      <a class="nav-item" href="appointment-letter.html">
+        <span>✉️</span> Appointment letters
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="nav-item" style="margin-bottom: 15px;">
+        <span>👤</span> Dr. Ayesha Karim
       </div>
-      <a href="../index.html" class="btn" style="margin-left: auto; font-size: 11px; border: 1px solid rgba(255,255,255,0.2); color: #E9E7DF; padding: 5px 10px; background: rgba(255,255,255,0.05);">Logout</a>
+      <a href="../index.html" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
 
-  <main class="main">
-    <div class="page-head">
-      <div>
-        <h1>Shortlist candidates</h1>
-        <p class="lede">Reviewing applicants for <strong>CS 201 — Data Structures</strong>, Fall 2026.</p>
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-header">
+      <div class="header-title">
+        <h2>Shortlist Candidates</h2>
+        <p>Reviewing applicants for CS 201 — Data Structures, Fall 2026</p>
       </div>
-      <div class="head-actions">
-        <select id="vacancy-switch" style="width:auto;">
+      <div class="header-profile">
+        <select id="vacancy-switch" style="width:auto; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px;">
           <option>CS 201 — Data Structures (14 applicants)</option>
           <option>CS 340 — Operating Systems (9 applicants)</option>
           <option>MATH 150 — Calculus I (11 applicants)</option>
         </select>
       </div>
-    </div>
+    </header>
 
-    <div class="stage-tracker">
-      <div class="stage is-done">
-        <span class="num">✓</span>
-        <span><span class="label">Post vacancy</span><span class="meta">Published Sep 4</span></span>
-      </div>
-      <div class="stage is-current">
-        <span class="num">2</span>
-        <span><span class="label">Shortlist candidates</span><span class="meta">4 of 14 reviewed</span></span>
-      </div>
-      <div class="stage">
-        <span class="num">3</span>
-        <span><span class="label">Generate appointment</span><span class="meta">Waiting</span></span>
-      </div>
-    </div>
-
-    <div class="layout-with-rail">
-
-      <aside class="rail">
-        <h3>Filter applicants</h3>
-        <div class="field">
-          <label for="f-cgpa">Minimum CGPA</label>
-          <input type="text" id="f-cgpa" placeholder="e.g. 3.50">
-        </div>
-        <div class="field">
-          <label for="f-year">Year of study</label>
-          <select id="f-year">
-            <option>Any</option>
-            <option>2nd year</option>
-            <option>3rd year</option>
-            <option>4th year</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-exp">Prior TA experience</label>
-          <select id="f-exp">
-            <option>Any</option>
-            <option>Has experience</option>
-            <option>No experience</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-status">Status</label>
-          <select id="f-status">
-            <option>All</option>
-            <option>New</option>
-            <option>Reviewed</option>
-            <option>Shortlisted</option>
-            <option>Rejected</option>
-          </select>
-        </div>
-        <button class="btn btn-ghost btn-small" style="width:100%; justify-content:center;">Apply filters</button>
-      </aside>
-
-      <div>
-        <div class="toolbar">
-          <span class="count"><strong>14</strong> applicants · <strong>2</strong> selected</span>
-          <div style="display:flex; gap:8px;">
-            <button class="btn btn-ghost btn-small">Mark as reviewed</button>
-            <a href="appointment-letter.html" class="btn btn-brass btn-small">Move selected to shortlist →</a>
+    <div class="page-container">
+      
+      <div class="layout-with-rail">
+        <!-- Filter Rail -->
+        <aside class="rail">
+          <h3>Filter applicants</h3>
+          <div class="field">
+            <label for="f-cgpa">Minimum CGPA</label>
+            <input type="text" id="f-cgpa" placeholder="e.g. 3.50">
           </div>
-        </div>
+          <div class="field">
+            <label for="f-year">Year of study</label>
+            <select id="f-year">
+              <option>Any</option>
+              <option>2nd year</option>
+              <option>3rd year</option>
+              <option>4th year</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-exp">Prior TA experience</label>
+            <select id="f-exp">
+              <option>Any</option>
+              <option>Has experience</option>
+              <option>No experience</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-status">Status</label>
+            <select id="f-status">
+              <option>All</option>
+              <option>New</option>
+              <option>Reviewed</option>
+              <option>Shortlisted</option>
+              <option>Rejected</option>
+            </select>
+          </div>
+          <button class="btn btn-outline" style="width:100%; justify-content:center;">Apply filters</button>
+        </aside>
 
-        <div class="panel" style="margin-bottom:0;">
-          <div class="panel-body" style="padding-top:6px;">
+        <!-- Applicants Table -->
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+            <div style="font-size: 13.5px; color: #555;">
+              <strong>14</strong> applicants · <strong>2</strong> selected
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="btn btn-outline">Mark as reviewed</button>
+              <a href="appointment-letter.html" class="btn btn-primary">Move selected to shortlist →</a>
+            </div>
+          </div>
+
+          <div class="table-container">
             <table>
               <thead>
                 <tr>
-                  <th class="select-col"><input type="checkbox" aria-label="Select all"></th>
+                  <th style="width:40px;"><input type="checkbox" aria-label="Select all" style="accent-color:#17437a;"></th>
                   <th>Applicant</th>
                   <th>CGPA</th>
                   <th>Year</th>
-                  <th>TA experience</th>
-                  <th>Match score</th>
+                  <th>Experience</th>
+                  <th>Score</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><input type="checkbox" checked></td>
-                  <td><span class="cell-primary">Nabila Sultana</span><span class="cell-sub">ID 20-41032 · nabila.sultana@meridian.edu</span></td>
-                  <td>3.91</td>
+                  <td><input type="checkbox" checked style="accent-color:#17437a;"></td>
+                  <td>
+                    <div class="student-info">
+                      <div>
+                        <div class="student-name">Nabila Sultana</div>
+                        <div class="student-id">ID 20-41032 · nabila.sultana@uiu.edu</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-style-19">3.91</td>
                   <td>3rd year</td>
-                  <td>Yes — CS 115, 1 term</td>
-                  <td class="score">94</td>
-                  <td><span class="pill pill-review">Shortlisted</span></td>
+                  <td>Yes</td>
+                  <td><strong>94</strong></td>
+                  <td><span class="badge badge-shortlisted">Shortlisted</span></td>
                 </tr>
                 <tr>
-                  <td><input type="checkbox" checked></td>
-                  <td><span class="cell-primary">Tanvir Ahmed</span><span class="cell-sub">ID 20-40877 · tanvir.ahmed@meridian.edu</span></td>
-                  <td>3.78</td>
+                  <td><input type="checkbox" checked style="accent-color:#17437a;"></td>
+                  <td>
+                    <div class="student-info">
+                      <div>
+                        <div class="student-name">Tanvir Ahmed</div>
+                        <div class="student-id">ID 20-40877 · tanvir.ahmed@uiu.edu</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-style-19">3.78</td>
                   <td>3rd year</td>
                   <td>No</td>
-                  <td class="score">88</td>
-                  <td><span class="pill pill-review">Shortlisted</span></td>
+                  <td><strong>88</strong></td>
+                  <td><span class="badge badge-shortlisted">Shortlisted</span></td>
                 </tr>
                 <tr>
-                  <td><input type="checkbox"></td>
-                  <td><span class="cell-primary">Farhana Islam</span><span class="cell-sub">ID 21-42210 · farhana.islam@meridian.edu</span></td>
-                  <td>3.85</td>
+                  <td><input type="checkbox" style="accent-color:#17437a;"></td>
+                  <td>
+                    <div class="student-info">
+                      <div>
+                        <div class="student-name">Farhana Islam</div>
+                        <div class="student-id">ID 21-42210 · farhana.islam@uiu.edu</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-style-19">3.85</td>
                   <td>2nd year</td>
                   <td>No</td>
-                  <td class="score">81</td>
-                  <td><span class="pill pill-open">Reviewed</span></td>
+                  <td><strong>81</strong></td>
+                  <td><span class="badge badge-pending">Reviewed</span></td>
                 </tr>
                 <tr>
-                  <td><input type="checkbox"></td>
-                  <td><span class="cell-primary">Rashed Kabir</span><span class="cell-sub">ID 20-40551 · rashed.kabir@meridian.edu</span></td>
-                  <td>3.62</td>
+                  <td><input type="checkbox" style="accent-color:#17437a;"></td>
+                  <td>
+                    <div class="student-info">
+                      <div>
+                        <div class="student-name">Rashed Kabir</div>
+                        <div class="student-id">ID 20-40551 · rashed.kabir@uiu.edu</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-style-19">3.62</td>
                   <td>4th year</td>
-                  <td>Yes — MATH 150, 2 terms</td>
-                  <td class="score">79</td>
-                  <td><span class="pill pill-open">Reviewed</span></td>
+                  <td>Yes</td>
+                  <td><strong>79</strong></td>
+                  <td><span class="badge badge-pending">Reviewed</span></td>
                 </tr>
                 <tr>
-                  <td><input type="checkbox"></td>
-                  <td><span class="cell-primary">Mehzabin Chowdhury</span><span class="cell-sub">ID 21-43109 · mehzabin.c@meridian.edu</span></td>
-                  <td>3.55</td>
+                  <td><input type="checkbox" style="accent-color:#17437a;"></td>
+                  <td>
+                    <div class="student-info">
+                      <div>
+                        <div class="student-name">Mehzabin Chowdhury</div>
+                        <div class="student-id">ID 21-43109 · mehzabin.c@uiu.edu</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-style-19">3.55</td>
                   <td>2nd year</td>
                   <td>No</td>
-                  <td class="score">73</td>
-                  <td><span class="pill pill-closed">New</span></td>
+                  <td><strong>73</strong></td>
+                  <td><span class="badge badge-interview">New</span></td>
                 </tr>
                 <tr>
-                  <td><input type="checkbox"></td>
-                  <td><span class="cell-primary">Shafayet Rahman</span><span class="cell-sub">ID 20-41890 · shafayet.r@meridian.edu</span></td>
-                  <td>3.31</td>
+                  <td><input type="checkbox" style="accent-color:#17437a;"></td>
+                  <td>
+                    <div class="student-info">
+                      <div>
+                        <div class="student-name">Shafayet Rahman</div>
+                        <div class="student-id">ID 20-41890 · shafayet.r@uiu.edu</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="dashboard-style-19">3.31</td>
                   <td>3rd year</td>
                   <td>No</td>
-                  <td class="score">61</td>
-                  <td><span class="pill pill-rejected">Below CGPA cutoff</span></td>
+                  <td><strong>61</strong></td>
+                  <td><span style="background:#ffebee; color:#c62828; padding:6px 12px; border-radius:20px; font-size:12px; font-weight:600;">Below CGPA</span></td>
                 </tr>
               </tbody>
             </table>
@@ -187,8 +219,6 @@
         </div>
       </div>
     </div>
-
   </main>
-</div>
 </body>
 </html>
