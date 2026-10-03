@@ -15,8 +15,6 @@ body {
 }
 
 
-/* Sidebar */
-
 .sidebar {
     width: 230px;
     min-height: 100vh;
@@ -71,8 +69,6 @@ body {
 }
 
 
-/* Menu */
-
 .menu {
     margin-top: 15px;
 }
@@ -93,8 +89,6 @@ body {
 }
 
 
-/* Logout */
-
 .logout {
     position: absolute;
     bottom: 20px;
@@ -110,16 +104,12 @@ body {
 }
 
 
-/* Main */
-
 .main {
     margin-left: 230px;
     width: calc(100% - 230px);
     padding: 30px;
 }
 
-
-/* Page Header */
 
 .page-header h1 {
     margin: 0;
@@ -134,8 +124,6 @@ body {
     color: #666;
 }
 
-
-/* TA Information */
 
 .ta-info {
     margin-top: 25px;
@@ -182,8 +170,6 @@ body {
     font-weight: bold;
 }
 
-
-/* Statistics */
 
 .stats {
     display: flex;
@@ -234,8 +220,6 @@ body {
 }
 
 
-/* Panel */
-
 .panel {
     margin-top: 25px;
 
@@ -266,8 +250,6 @@ body {
     font-size: 13px;
 }
 
-
-/* Task Card */
 
 .task-card {
     display: flex;
@@ -346,8 +328,6 @@ body {
 }
 
 
-/* Status */
-
 .task-status {
     padding: 8px 13px;
 
@@ -372,8 +352,6 @@ body {
     color: #8a6500;
 }
 
-
-/* Responsive */
 
 @media (max-width: 800px) {
 

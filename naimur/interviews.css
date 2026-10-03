@@ -19,7 +19,6 @@ a {
     color: inherit;
 }
 
-/* Sidebar */
 .sidebar {
     width: 260px;
     background-color: #ffffff;
@@ -98,7 +97,6 @@ a {
     cursor: pointer;
 }
 
-/* Main Content */
 .main-content {
     margin-left: 260px;
     flex: 1;
@@ -152,7 +150,6 @@ a {
     flex: 1;
 }
 
-/* Cards & Layouts */
 .grid-2col {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -167,7 +164,6 @@ a {
     border: 1px solid #eff1f5;
 }
 
-/* Banner Card */
 .banner-card {
     background: #17437a;
     color: white;
@@ -196,7 +192,6 @@ a {
     line-height: 1.5;
 }
 
-/* Stat Cards Row */
 .stats-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -244,7 +239,6 @@ a {
     font-weight: 600;
 }
 
-/* Tables */
 .table-container {
     background: white;
     border-radius: 12px;
@@ -316,7 +310,6 @@ td {
     color: #888;
 }
 
-/* Badges */
 .badge {
     padding: 6px 12px;
     border-radius: 20px;
@@ -344,7 +337,6 @@ td {
     color: #388e3c;
 }
 
-/* Buttons */
 .btn {
     padding: 10px 20px;
     border-radius: 8px;

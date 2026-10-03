@@ -15,8 +15,6 @@ body {
 }
 
 
-/* Sidebar */
-
 .sidebar {
     width: 230px;
     min-height: 100vh;
@@ -100,8 +98,6 @@ body {
 }
 
 
-/* Main */
-
 .main {
     margin-left: 230px;
     width: calc(100% - 230px);
@@ -119,8 +115,6 @@ body {
     color: #666;
 }
 
-
-/* Welcome */
 
 .welcome {
     margin-top: 25px;
@@ -150,8 +144,6 @@ body {
     font-weight: bold;
 }
 
-
-/* Statistics */
 
 .stats {
     display: flex;
@@ -203,8 +195,6 @@ body {
 }
 
 
-/* Panels */
-
 .panel {
     margin-top: 25px;
     background: white;
@@ -238,8 +228,6 @@ body {
     font-weight: bold;
 }
 
-
-/* Position Cards */
 
 .position-row {
     display: flex;
@@ -288,8 +276,6 @@ body {
 }
 
 
-/* Table */
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -330,8 +316,6 @@ td {
     color: #a52828;
 }
 
-
-/* Responsive */
 
 @media (max-width: 900px) {
 

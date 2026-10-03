@@ -15,8 +15,6 @@ body {
 }
 
 
-/* Sidebar */
-
 .sidebar {
     width: 230px;
     min-height: 100vh;
@@ -95,8 +93,6 @@ body {
 }
 
 
-/* Main */
-
 .main {
     margin-left: 230px;
     width: calc(100% - 230px);
@@ -114,8 +110,6 @@ body {
     color: #666;
 }
 
-
-/* Form */
 
 .form-card {
     max-width: 850px;
@@ -176,8 +170,6 @@ textarea {
 }
 
 
-/* Buttons */
-
 .button-row {
     display: flex;
     justify-content: flex-end;
@@ -205,8 +197,6 @@ button {
     cursor: pointer;
 }
 
-
-/* Responsive */
 
 @media (max-width: 700px) {
 

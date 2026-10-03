@@ -15,8 +15,6 @@ body {
 }
 
 
-/* Sidebar */
-
 .sidebar {
     width: 230px;
     min-height: 100vh;
@@ -97,8 +95,6 @@ body {
 }
 
 
-/* Main */
-
 .main {
     margin-left: 230px;
     width: calc(100% - 230px);
@@ -116,8 +112,6 @@ body {
     color: #666;
 }
 
-
-/* Position */
 
 .position-list {
     margin-top: 25px;
@@ -206,8 +200,6 @@ body {
     font-size: 13px;
 }
 
-
-/* Responsive */
 
 @media (max-width: 800px) {
 

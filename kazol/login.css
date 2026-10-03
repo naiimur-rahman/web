@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* Basic reset and typography */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +17,6 @@ a {
     color: inherit;
 }
 
-/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -120,7 +118,6 @@ a {
     content: "S";
 }
 
-/* Landing Page Hero */
 .hero {
     display: flex;
     justify-content: space-between;
@@ -197,8 +194,7 @@ a {
 .stat-card {
     position: absolute;
     bottom: -20px;
-    left: 20px; /* Moved inwards to avoid overlapping with left text */
-    background: white;
+    left: 20px; background: white;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
@@ -229,7 +225,6 @@ a {
     margin: 0;
 }
 
-/* Notices Section */
 .notices {
     padding: 40px 50px;
     max-width: 1200px;
@@ -306,7 +301,6 @@ a {
 .status-released { background: #e6f7ef; color: #28a745; }
 .status-urgent { background: #fff0e6; color: #f28b30; }
 
-/* Login Page */
 .login-container {
     display: flex;
     height: 100vh;
@@ -324,7 +318,6 @@ a {
     overflow: hidden;
 }
 
-/* Faint background pattern/image simulation */
 .login-left::before {
     content: "";
     position: absolute;

@@ -15,8 +15,6 @@ body {
 }
 
 
-/* Sidebar */
-
 .sidebar {
     width: 230px;
     min-height: 100vh;
@@ -95,8 +93,6 @@ body {
 }
 
 
-/* Main */
-
 .main {
     margin-left: 230px;
     width: calc(100% - 230px);
@@ -114,8 +110,6 @@ body {
     color: #666;
 }
 
-
-/* Profile Header */
 
 .profile-header {
     margin-top: 25px;
@@ -153,8 +147,6 @@ body {
     font-size: 13px;
 }
 
-
-/* Information Cards */
 
 .info-card {
     margin-top: 20px;
@@ -198,8 +190,6 @@ body {
     color: #258344 !important;
 }
 
-
-/* Responsive */
 
 @media (max-width: 700px) {
 
