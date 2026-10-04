@@ -123,4 +123,58 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     }
+
+
+    if (window.location.pathname.includes("applicants.html")) {
+        fetch("../api/applications.php")
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    let tbody = document.querySelector("table tbody");
+
+                    tbody.innerHTML = '';
+                    
+                    data.applications.forEach(app => {
+                        let tr = document.createElement("tr");
+                        let statusClass = "badge-pending";
+                        if (app.status === "Shortlisted") statusClass = "badge-shortlisted";
+                        
+                        let initials = app.student_name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+                        if (!initials) initials = "ST";
+
+                        tr.innerHTML = `
+                            <td>
+                                <div class="student-info">
+                                    <div class="student-initials">${initials}</div>
+                                    <div>
+                                        <div class="student-name">${app.student_name}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="applicants-style-2">${app.student_uni_id}</td>
+                            <td class="applicants-style-23">${parseFloat(app.cgpa).toFixed(2)}</td>
+                            <td><span class="badge ${statusClass}">${app.status}</span></td>
+                            <td><button class="action-link btn-shortlist" data-id="${app.id}" style="background:none; border:none; cursor:pointer; color:#17437a; font-weight:600;">View / Shortlist</button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+
+
+                    document.querySelectorAll('.btn-shortlist').forEach(btn => {
+                        btn.addEventListener("click", function(e) {
+                            e.preventDefault();
+                            let appId = this.getAttribute("data-id");
+                            fetch("../api/applications.php?action=status", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ application_id: appId, status: "Shortlisted", action: "status" })
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        });
+                    });
+                }
+            })
+            .catch(err => console.error("Error fetching applicants:", err));
+    }
 });

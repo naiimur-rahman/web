@@ -103,4 +103,46 @@ document.addEventListener("DOMContentLoaded", function() {
     if (formActionsDiv) {
         formActionsDiv.prepend(printBtn);
     }
+
+
+    if (window.location.pathname.includes("shortlist-candidates.html")) {
+        fetch("../api/applications.php")
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    let tbody = document.querySelector("table tbody");
+                    if (tbody) {
+                        tbody.innerHTML = '';
+                        
+                        data.applications.forEach(app => {
+                            let tr = document.createElement("tr");
+                            
+                            let statusClass = "badge-pending";
+                            let statusText = app.status;
+                            if (app.status === "Shortlisted") statusClass = "badge-shortlisted";
+                            if (app.status === "Pending") { statusClass = "badge-pending"; statusText = "Reviewed"; }
+                            
+                            tr.innerHTML = `
+                                <td><input type="checkbox" style="accent-color:#17437a;"></td>
+                                <td>
+                                    <div class="student-info">
+                                        <div>
+                                            <div class="student-name">${app.student_name}</div>
+                                            <div class="student-id">ID ${app.student_uni_id} · ${app.email}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="dashboard-style-19">${parseFloat(app.cgpa).toFixed(2)}</td>
+                                <td>N/A</td>
+                                <td>${app.skills ? 'Yes' : 'No'}</td>
+                                <td><strong>N/A</strong></td>
+                                <td><span class="badge ${statusClass}">${statusText}</span></td>
+                            `;
+                            tbody.appendChild(tr);
+                        });
+                    }
+                }
+            })
+            .catch(err => console.error("Error fetching admin candidates:", err));
+    }
 });

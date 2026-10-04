@@ -89,4 +89,103 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+
+    if (window.location.pathname.includes("my_applications.html")) {
+        fetch("../api/applications.php?student_id=1")
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    let panel = document.querySelector(".panel");
+
+                    document.querySelectorAll(".application-card").forEach(card => card.remove());
+                    
+                    data.applications.forEach(app => {
+                        let div = document.createElement("div");
+                        div.className = "application-card";
+                        
+                        let statusClass = app.status.toLowerCase().replace(" ", "-");
+                        if (statusClass === "pending") statusClass = "review";
+                        
+                        div.innerHTML = `
+                            <div class="application-info">
+                                <h3>${app.course_title || 'TA Position'}</h3>
+                                <p>Course: ${app.course_code || 'N/A'}</p>
+                                <p>Applied: ${app.created_at ? new Date(app.created_at).toLocaleDateString() : 'Recently'}</p>
+                            </div>
+                            <div class="application-status ${statusClass}">${app.status}</div>
+                        `;
+
+                        let bottomBtn = panel.querySelector(".bottom-button");
+                        if (bottomBtn) {
+                            panel.insertBefore(div, bottomBtn);
+                        } else {
+                            panel.appendChild(div);
+                        }
+                    });
+                }
+            })
+            .catch(err => console.error("Error fetching applications:", err));
+    }
+
+
+    if (window.location.pathname.includes("assigned_task.html")) {
+        fetch("../api/tasks.php?student_id=1")
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    let panel = document.querySelector(".panel");
+
+                    document.querySelectorAll(".task-card").forEach(card => card.remove());
+                    
+                    let completedCount = 0;
+                    let pendingCount = 0;
+                    
+                    data.tasks.forEach((task, index) => {
+                        let div = document.createElement("div");
+                        div.className = "task-card";
+                        div.style.cursor = "pointer";
+                        
+                        let isCompleted = task.status === "Completed";
+                        if (isCompleted) completedCount++;
+                        else pendingCount++;
+                        
+                        div.innerHTML = `
+                            <div class="task-number">${(index + 1).toString().padStart(2, '0')}</div>
+                            <div class="task-content">
+                                <h3>${task.title}</h3>
+                                <p>${task.description}</p>
+                                <div class="task-details">
+                                    <span>Course: ${task.course_code}</span>
+                                    <span>Deadline: ${task.deadline}</span>
+                                </div>
+                            </div>
+                            <div class="task-status ${isCompleted ? 'completed' : 'pending'}">${task.status}</div>
+                        `;
+                        
+                        div.addEventListener("click", function() {
+                            let newStatus = div.querySelector(".task-status").classList.contains("completed") ? "Pending" : "Completed";
+                            
+                            fetch("../api/tasks.php?action=toggle", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ task_id: task.id, status: newStatus })
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        });
+                        
+                        panel.appendChild(div);
+                    });
+                    
+                    let stats = document.querySelectorAll(".stats .stat .number");
+                    if (stats.length >= 3) {
+                        stats[0].innerText = (completedCount + pendingCount).toString().padStart(2, '0');
+                        stats[1].innerText = completedCount.toString().padStart(2, '0');
+                        stats[2].innerText = pendingCount.toString().padStart(2, '0');
+                    }
+                }
+            })
+            .catch(err => console.error("Error fetching tasks:", err));
+    }
 });
