@@ -35,8 +35,8 @@
       <a class="nav-item" href="reviews.html"> <span>⭐</span> TA Reviews </a>
     </nav>
     <div class="sidebar-footer">
-      <div class="nav-item dashboard-style-3"><span>👤</span> Profile</div>
-      <a href="../kazol/login.html" class="logout-btn"><span>🚪</span> Logout</a>
+      <a class="nav-item" href="profile.html"><span>??</span> Profile</a>
+      <a href="javascript:void(0)" onclick="logout()" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
   <main class="main-content">
@@ -117,49 +117,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">MT</div>
-                    <div>
-                      <div class="student-name">Md. Tauhid Tazwar Khan</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="dashboard-style-19">3.82</td>
-                <td><span class="badge badge-pending">Pending</span></td>
-                <td><a class="action-link" href="#">Review</a></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">NJ</div>
-                    <div>
-                      <div class="student-name">Nusrat Jahan</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="dashboard-style-19">3.75</td>
-                <td>
-                  <span class="badge badge-shortlisted">Shortlisted</span>
-                </td>
-                <td><a class="action-link" href="#">Review</a></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">TH</div>
-                    <div>
-                      <div class="student-name">Tanvir Hasan</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="dashboard-style-19">3.68</td>
-                <td>
-                  <span class="badge badge-interview">Interview Scheduled</span>
-                </td>
-                <td><a class="action-link" href="#">Review</a></td>
-              </tr>
+              <!-- JS dynamically injects recent applicants here -->
             </tbody>
           </table>
         </div>

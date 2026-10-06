@@ -35,8 +35,8 @@
       <a class="nav-item" href="reviews.html"> <span>⭐</span> TA Reviews </a>
     </nav>
     <div class="sidebar-footer">
-      <div class="nav-item applicants-style-3"><span>👤</span> Profile</div>
-      <a href="../kazol/login.html" class="logout-btn"><span>🚪</span> Logout</a>
+      <a class="nav-item applicants-style-3" href="profile.html"><span>👤</span> Profile</a>
+      <a href="javascript:void(0)" onclick="logout()" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
   <main class="main-content">
@@ -102,50 +102,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">TK</div>
-                    <div>
-                      <div class="student-name">Md. Tauhid Tazwar Khan</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="applicants-style-2">01122212345</td>
-                <td class="applicants-style-23">3.82</td>
-                <td><span class="badge badge-pending">Pending</span></td>
-                <td><a class="action-link" href="#">View Profile</a></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">NJ</div>
-                    <div>
-                      <div class="student-name">Nusrat Jahan</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="applicants-style-2">01122114567</td>
-                <td class="applicants-style-23">3.78</td>
-                <td><span class="badge badge-pending">Pending</span></td>
-                <td><a class="action-link" href="#">View Profile</a></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">TH</div>
-                    <div>
-                      <div class="student-name">Tanvir Hasan</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="applicants-style-2">01122011234</td>
-                <td class="applicants-style-23">3.65</td>
-                <td>
-                  <span class="badge badge-shortlisted">Shortlisted</span>
-                </td>
-                <td><a class="action-link" href="#">View Profile</a></td>
-              </tr>
+              <!-- JS dynamically injects applicants here -->
             </tbody>
           </table>
           <div class="applicants-style-24">

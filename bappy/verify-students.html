@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Students · UIU TA Hiring</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-badge">UIU</div>
+      <div class="dashboard-style-2" style="font-weight: 600; font-size: 14px;">UIU TA Hiring</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="admin-dashboard.html">
+        <span>📊</span> Dashboard
+      </a>
+      <a class="nav-item" href="create-vacancy.html">
+        <span>➕</span> Post a vacancy
+      </a>
+      <a class="nav-item" href="shortlist-candidates.html">
+        <span>✓</span> Shortlist candidates
+      </a>
+      <a class="nav-item" href="appointment-letter.html">
+        <span>✉️</span> Appointment letters
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a class="nav-item" href="profile.html"><span>👤</span> Profile</a>
+      <a href="javascript:void(0)" onclick="logout()" class="logout-btn"><span>🚪</span> Logout</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-header">
+      <div class="header-title">
+        <h2>Verify Students</h2>
+        <p>Reviewing applicants for CS 201 — Data Structures, Fall 2026</p>
+      </div>
+      <div class="header-profile">
+        <select id="vacancy-switch" style="width:auto; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px;">
+          <option>CS 201 — Data Structures (14 applicants)</option>
+          <option>CS 340 — Operating Systems (9 applicants)</option>
+          <option>MATH 150 — Calculus I (11 applicants)</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="page-container">
+      
+      <div class="layout-with-rail">
+        <aside class="rail">
+          <h3>Filter applicants</h3>
+          <div class="field">
+            <label for="f-cgpa">Minimum CGPA</label>
+            <input type="text" id="f-cgpa" placeholder="e.g. 3.50">
+          </div>
+          <div class="field">
+            <label for="f-year">Year of study</label>
+            <select id="f-year">
+              <option>Any</option>
+              <option>2nd year</option>
+              <option>3rd year</option>
+              <option>4th year</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-exp">Prior TA experience</label>
+            <select id="f-exp">
+              <option>Any</option>
+              <option>Has experience</option>
+              <option>No experience</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-status">Status</label>
+            <select id="f-status">
+              <option>All</option>
+              <option>New</option>
+              <option>Reviewed</option>
+              <option>Shortlisted</option>
+              <option>Rejected</option>
+            </select>
+          </div>
+          <button class="btn btn-outline" style="width:100%; justify-content:center;">Apply filters</button>
+        </aside>
+
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+            <div style="font-size: 13.5px; color: #555;">
+              <strong>14</strong> applicants · <strong>2</strong> selected
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="btn btn-outline">Mark as reviewed</button>
+              <a href="appointment-letter.html" class="btn btn-primary">Move selected to shortlist →</a>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead><tr><th>Student Info</th><th>Department</th><th>CGPA</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody id="verify-tbody"><tr><td colspan="5" style="text-align:center;padding:20px;">Loading students...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>

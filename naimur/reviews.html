@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -35,7 +35,7 @@
 
     <div class="sidebar-footer">
       <div class="nav-item"><span>👤</span> Profile</div>
-      <a href="../kazol/login.html" class="logout-btn"><span>🚪</span> Logout</a>
+      <a href="javascript:void(0)" onclick="logout()" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
 
@@ -76,64 +76,7 @@
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">AH</div>
-                    <div>
-                      <div class="student-name">Ashfaq Hossain</div>
-                      <div class="student-id">011211155</div>
-                    </div>
-                  </div>
-                </td>
-                <td style="font-size: 13px">Web Programming</td>
-                <td><span class="badge badge-completed">Reviewed</span></td>
-                <td>
-                  <button class="btn btn-outline" onclick="openReview('Ashfaq Hossain')">
-                    View Review
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">SJ</div>
-                    <div>
-                      <div class="student-name">Sadia Jahan</div>
-                      <div class="student-id">011211244</div>
-                    </div>
-                  </div>
-                </td>
-                <td style="font-size: 13px">Database Systems</td>
-                <td><span class="badge badge-pending">Pending</span></td>
-                <td>
-                  <button class="btn btn-outline" style="border-color: #17437a; color: #17437a"
-                    onclick="openReview('Sadia Jahan')">
-                    Write Review
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-info">
-                    <div class="student-initials">RA</div>
-                    <div>
-                      <div class="student-name">Rafiq Ahmed</div>
-                      <div class="student-id">011211099</div>
-                    </div>
-                  </div>
-                </td>
-                <td style="font-size: 13px">Data Structures</td>
-                <td><span class="badge badge-pending">Pending</span></td>
-                <td>
-                  <button class="btn btn-outline" style="border-color: #17437a; color: #17437a"
-                    onclick="openReview('Rafiq Ahmed')">
-                    Write Review
-                  </button>
-                </td>
-              </tr>
-            </tbody>
+            <tbody><!-- JS dynamically injects reviews here --></tbody>
           </table>
         </div>
 

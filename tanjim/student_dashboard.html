@@ -27,10 +27,11 @@
           <a href="my_applications.html" class="menu-item">My Applications</a>
           <a href="student_profile.html" class="menu-item">My Profile</a>
           <a href="assigned_task.html" class="menu-item">Assigned Task</a>
+          <a href="appointment_letter.html" class="menu-item">Appointment Letter</a>
         </div>
 
         <div class="logout">
-          <a href="../kazol/login.html">Logout</a>
+          <a href="javascript:void(0)" onclick="logout()">Logout</a>
         </div>
       </div>
 
@@ -54,26 +55,26 @@
         <div class="stats">
           <div class="stat blue">
             <div class="stat-title">Applications</div>
-            <div class="stat-number">04</div>
-            <div class="stat-status">2 Under Review</div>
+            <div class="stat-number">00</div>
+            <div class="stat-status">Loading...</div>
           </div>
 
           <div class="stat green">
             <div class="stat-title">Shortlisted</div>
-            <div class="stat-number">02</div>
-            <div class="stat-status">Interview Pending</div>
+            <div class="stat-number">00</div>
+            <div class="stat-status">Loading...</div>
           </div>
 
           <div class="stat orange">
             <div class="stat-title">Interviews</div>
-            <div class="stat-number">01</div>
-            <div class="stat-status">Upcoming</div>
+            <div class="stat-number">00</div>
+            <div class="stat-status">Loading...</div>
           </div>
 
           <div class="stat purple">
             <div class="stat-title">Assigned Duties</div>
-            <div class="stat-number">01</div>
-            <div class="stat-status">Active</div>
+            <div class="stat-number">00</div>
+            <div class="stat-status">Loading...</div>
           </div>
         </div>
 
@@ -83,49 +84,11 @@
               <h2>Available Positions</h2>
               <p>Open TA opportunities</p>
             </div>
-
             <a href="ta_position.html">View All</a>
           </div>
-
+          <!-- JS dynamically injects position cards here -->
           <div class="position-row">
-            <div class="position-card">
-              <h3>Web Programming TA</h3>
-              <p>Instructor: Mahmudul Hasan</p>
-              <p>Course: CSE 4165</p>
-
-              <div class="details">
-                <span>2 Vacancies</span>
-                <span>Sep 15, 2026</span>
-              </div>
-
-              <a href="apply.html" class="apply-button">Apply</a>
-            </div>
-
-            <div class="position-card">
-              <h3>Database Systems TA</h3>
-              <p>Instructor: Dr. Rahman</p>
-              <p>Course: CSE 4141</p>
-
-              <div class="details">
-                <span>1 Vacancy</span>
-                <span>Sep 18, 2026</span>
-              </div>
-
-              <a href="apply.html" class="apply-button">Apply</a>
-            </div>
-
-            <div class="position-card">
-              <h3>Data Structures TA</h3>
-              <p>Instructor: Dr. Ahmed</p>
-              <p>Course: CSE 2213</p>
-
-              <div class="details">
-                <span>2 Vacancies</span>
-                <span>Sep 20, 2026</span>
-              </div>
-
-              <a href="apply.html" class="apply-button">Apply</a>
-            </div>
+            <p style="color:#888; padding:10px;">Loading positions...</p>
           </div>
         </div>
 
@@ -135,44 +98,51 @@
               <h2>My Applications</h2>
               <p>Recent application status</p>
             </div>
-
             <a href="my_applications.html">View All</a>
           </div>
-
+          <!-- JS dynamically injects application rows here -->
           <table>
-            <tr>
-              <th>Position</th>
-              <th>Applied Date</th>
-              <th>Status</th>
-            </tr>
-
-            <tr>
-              <td>Web Programming</td>
-              <td>Sep 02, 2026</td>
-              <td>
-                <span class="status review">Under Review</span>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Database Management Systems</td>
-              <td>Aug 29, 2026</td>
-              <td>
-                <span class="status selected">Selected</span>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Data Structure and Algorithm 1</td>
-              <td>Aug 25, 2026</td>
-              <td>
-                <span class="status rejected">Rejected</span>
-              </td>
-            </tr>
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Applied Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- populated by JS -->
+            </tbody>
           </table>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+            <div class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Important Notices</h2>
+                        <p>Latest announcements</p>
+                    </div>
+                </div>
+                <div id="dashboard-notices" style="padding: 10px 0;">
+                    <p style="color:#888; font-size:13px;">Loading notices...</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Upcoming Deadlines</h2>
+                        <p>Tasks & Application dates</p>
+                    </div>
+                </div>
+                <div id="dashboard-deadlines" style="padding: 10px 0;">
+                    <p style="color:#888; font-size:13px;">Loading deadlines...</p>
+                </div>
+            </div>
         </div>
       </div>
     </div>
     <script src="student.js"></script>
   </body>
 </html>
+

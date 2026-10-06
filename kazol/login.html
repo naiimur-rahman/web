@@ -1,11 +1,16 @@
 <!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>TA Management System - Login</title>
     <link href="login.css" rel="stylesheet" />
+    <style>
+      .hidden { display: none !important; }
+      .toggle-link { color: #d85c27; cursor: pointer; text-decoration: none; font-weight: 600; }
+      .toggle-link:hover { text-decoration: underline; }
+      .reg-options { display: flex; gap: 15px; margin-top: 20px; font-size: 14px; justify-content: center; color: #555;}
+    </style>
   </head>
   <body>
     <div class="login-container">
@@ -32,10 +37,13 @@
         </div>
       </div>
       <div class="login-right">
-        <div class="login-form-box">
+        
+        <!-- LOGIN SECTION -->
+        <div class="login-form-box" id="login-section">
           <a class="login-ext-2" href="index.html">← Back to Home</a>
           <h2>Welcome Back</h2>
           <p>Please enter your credentials to access the TA dashboard.</p>
+          
           <div class="form-group login-ext-3">
             <label class="login-ext-4">SELECT YOUR IDENTITY</label>
           </div>
@@ -53,6 +61,7 @@
               Admin
             </div>
           </div>
+          
           <div class="form-group">
             <label>
               Institutional Email
@@ -63,6 +72,7 @@
               <input id="username" placeholder="student" type="text" />
             </div>
           </div>
+          
           <div class="form-group">
             <label>
               Password
@@ -74,20 +84,76 @@
               <span class="eye-icon">👁️</span>
             </div>
           </div>
+          
           <div class="checkbox-group">
             <input id="stay-logged" type="checkbox" />
-            <label class="login-ext-6" for="stay-logged"
-              >Stay logged in for 30 days</label
-            >
+            <label class="login-ext-6" for="stay-logged">Stay logged in for 30 days</label>
           </div>
-          <button class="btn-primary" onclick="handleLogin()">
+          
+          <button class="btn-primary" onclick="handleLogin()" id="login-btn">
             Access Portal →
           </button>
-          <div class="trouble-signing">
-            Having trouble signing in?
-            <a href="#">Contact System Administrator</a>
+          
+          <div class="reg-options">
+            <a class="toggle-link" onclick="toggleReg('student')">New Student? Register</a>
+            <span>|</span>
+            <a class="toggle-link" onclick="toggleReg('faculty')">New Teacher? Register</a>
           </div>
         </div>
+
+        <!-- REGISTRATION SECTION -->
+        <div class="login-form-box hidden" id="register-section">
+          <a class="login-ext-2 toggle-link" onclick="toggleLogin()">← Back to Login</a>
+          <h2 id="reg-title">Create Account</h2>
+          <p>Register as a <span id="reg-role-text">student</span> in the TA portal.</p>
+          
+          <input type="hidden" id="reg-role" value="student">
+
+          <div class="form-group">
+            <label id="reg-id-label">Student ID</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🆔</span>
+              <input id="reg-id" placeholder="e.g. 011222146" type="text" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Institutional Email</label>
+            <div class="input-wrapper">
+              <span class="input-icon">📧</span>
+              <input id="reg-email" placeholder="example@bscse.uiu.ac.bd" type="email" />
+            </div>
+          </div>
+          
+          <div class="form-group" id="reg-cgpa-group">
+            <label>CGPA</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🎓</span>
+              <input id="reg-cgpa" placeholder="e.g. 3.85" type="number" step="0.01" min="0" max="4.00" />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔒</span>
+              <input id="reg-pass" placeholder="••••••••" type="password" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔒</span>
+              <input id="reg-pass2" placeholder="••••••••" type="password" />
+            </div>
+          </div>
+          
+          <button class="btn-primary" onclick="handleRegister()" id="reg-btn" style="margin-top: 20px;">
+            Register Account →
+          </button>
+        </div>
+
       </div>
     </div>
     <script src="login.js"></script>

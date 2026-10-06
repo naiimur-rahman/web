@@ -9,11 +9,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` VARCHAR(100) NOT NULL UNIQUE,
   `role` ENUM('student', 'faculty', 'admin') NOT NULL,
   `university_id` VARCHAR(20) DEFAULT NULL,
-  `department` VARCHAR(50) DEFAULT 'CSE',
+  `department` VARCHAR(100) DEFAULT 'Computer Science & Engineering',
   `cgpa` DECIMAL(3,2) DEFAULT NULL,
-  `phone` VARCHAR(20) DEFAULT NULL,
+  `phone` VARCHAR(30) DEFAULT NULL,
   `completed_credits` INT DEFAULT 0,
   `semester` VARCHAR(50) DEFAULT 'Fall 2026',
+  `profile_picture` VARCHAR(255) DEFAULT 'default.png',
+  `address` TEXT DEFAULT NULL,
+  `program` VARCHAR(100) DEFAULT NULL,
+  `is_verified` TINYINT(1) DEFAULT 0,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -21,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `vacancies` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `course_code` VARCHAR(20) NOT NULL,
   `course_title` VARCHAR(100) NOT NULL,
+  `faculty_id` INT DEFAULT NULL,
   `instructor_name` VARCHAR(100) NOT NULL,
   `term` VARCHAR(50) NOT NULL DEFAULT 'Fall 2026',
   `positions` INT NOT NULL DEFAULT 1,
@@ -34,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `vacancies` (
   `deadline` DATE NOT NULL,
   `start_date` DATE NOT NULL,
   `status` ENUM('Draft', 'Open', 'Reviewing', 'Closed') DEFAULT 'Open',
-  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`faculty_id`) REFERENCES `users`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `applications` (
@@ -121,13 +127,13 @@ CREATE TABLE IF NOT EXISTS `notices` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `users` (`id`, `username`, `password`, `name`, `email`, `role`, `university_id`, `department`, `cgpa`, `completed_credits`, `semester`) VALUES
-(1, 'student', '1234', 'Tanjim Tazwar', 'tkhan222146@bscse.uiu.ac.bd', 'student', '011222146', 'Computer Science & Engineering', 3.55, 104, '10th Fall 2026'),
-(2, 'tauhid', '1234', 'Md. Tauhid Tazwar Khan', 'tauhid@bscse.uiu.ac.bd', 'student', '01122212345', 'Computer Science & Engineering', 3.82, 110, '10th Fall 2026'),
-(3, 'nusrat', '1234', 'Nusrat Jahan', 'nusrat@bscse.uiu.ac.bd', 'student', '01122114567', 'Computer Science & Engineering', 3.78, 115, '11th Fall 2026'),
-(4, 'tanvir', '1234', 'Tanvir Hasan', 'tanvir@bscse.uiu.ac.bd', 'student', '01122011234', 'Computer Science & Engineering', 3.65, 108, '10th Fall 2026'),
-(5, 'nabila', '1234', 'Nabila Sultana', 'nabila.sultana@uiu.edu', 'student', '20-41032', 'Computer Science & Engineering', 3.91, 120, '11th Fall 2026'),
-(6, 'faculty', '1234', 'Mr. Mahmudul Hasan', 'mahmudul@cse.uiu.ac.bd', 'faculty', 'FAC-082', 'Computer Science & Engineering', NULL, NULL, 'Fall 2026'),
-(7, 'admin', '1234', 'Dr. Ayesha Karim', 'ayesha.karim@uiu.ac.bd', 'admin', 'ADM-001', 'Computer Science & Engineering', NULL, NULL, 'Fall 2026');
+(1, 'student', '$2y$10$ddvhNfoSspqrpcPyykNCwerXrGM0qn73X2SMs.3fHOWfNG6qPzdAu', 'Tanjim Tazwar', 'tkhan222146@bscse.uiu.ac.bd', 'student', '011222146', 'Computer Science & Engineering', 3.55, 104, '10th Fall 2026'),
+(2, 'tauhid', '$2y$10$ddvhNfoSspqrpcPyykNCwerXrGM0qn73X2SMs.3fHOWfNG6qPzdAu', 'Md. Tauhid Tazwar Khan', 'tauhid@bscse.uiu.ac.bd', 'student', '01122212345', 'Computer Science & Engineering', 3.82, 110, '10th Fall 2026'),
+(3, 'nusrat', '$2y$10$ddvhNfoSspqrpcPyykNCwerXrGM0qn73X2SMs.3fHOWfNG6qPzdAu', 'Nusrat Jahan', 'nusrat@bscse.uiu.ac.bd', 'student', '01122114567', 'Computer Science & Engineering', 3.78, 115, '11th Fall 2026'),
+(4, 'tanvir', '$2y$10$ddvhNfoSspqrpcPyykNCwerXrGM0qn73X2SMs.3fHOWfNG6qPzdAu', 'Tanvir Hasan', 'tanvir@bscse.uiu.ac.bd', 'student', '01122011234', 'Computer Science & Engineering', 3.65, 108, '10th Fall 2026'),
+(5, 'nabila', '$2y$10$ddvhNfoSspqrpcPyykNCwerXrGM0qn73X2SMs.3fHOWfNG6qPzdAu', 'Nabila Sultana', 'nabila.sultana@uiu.edu', 'student', '20-41032', 'Computer Science & Engineering', 3.91, 120, '11th Fall 2026'),
+(6, 'faculty', '$2y$10$ddvhNfoSspqrpcPyykNCwerXrGM0qn73X2SMs.3fHOWfNG6qPzdAu', 'Mr. Mahmudul Hasan', 'mahmudul@cse.uiu.ac.bd', 'faculty', 'FAC-082', 'Computer Science & Engineering', NULL, NULL, 'Fall 2026'),
+(7, 'admin', '$2y$10$ddvhNfoSspqrpcPyykNCwerXrGM0qn73X2SMs.3fHOWfNG6qPzdAu', 'Dr. Ayesha Karim', 'ayesha.karim@uiu.ac.bd', 'admin', 'ADM-001', 'Computer Science & Engineering', NULL, NULL, 'Fall 2026');
 
 INSERT INTO `vacancies` (`id`, `course_code`, `course_title`, `instructor_name`, `term`, `positions`, `weekly_hours`, `stipend`, `min_cgpa`, `min_year`, `prereq`, `priority`, `responsibilities`, `deadline`, `start_date`, `status`) VALUES
 (1, 'CSE 4165', 'Web Programming TA', 'Mr. Mahmudul Hasan', 'Fall 2026', 2, 10, 8000.00, 3.50, '3rd year', 1, 1, 'Lead two weekly lab sections, hold 3 office hours, and grade assignments.', '2026-09-15', '2026-09-29', 'Open'),

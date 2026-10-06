@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Faculty Profile - TA Management System</title>
+  <link href="dashboard.css" rel="stylesheet" />
+  <style>
+      .profile-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto;}
+      .profile-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+      .large-avatar { width: 100px; height: 100px; border-radius: 50%; background: #17437a; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: bold; cursor: pointer; position: relative; overflow: hidden; }
+      .large-avatar img { width: 100%; height: 100%; object-fit: cover; }
+      .large-avatar:hover::after { content: 'Upload'; position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 14px; text-align: center; padding: 4px 0; }
+      .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .form-group { margin-bottom: 15px; }
+      .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #555; }
+      .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+      .form-group input[readonly] { background: #f5f5f5; cursor: not-allowed; }
+      .btn-primary { background: #17437a; color: #fff; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px; }
+      .btn-primary:hover { background: #12335c; }
+  </style>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="dashboard-style-1">
+        <div class="dashboard-style-2">UIU TA Management</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="dashboard.html"> Dashboard </a>
+      <a class="nav-item" href="applicants.html"> Applicants </a>
+      <a class="nav-item" href="shortlist.html"> Shortlisted Students </a>
+      <a class="nav-item" href="interviews.html"> Interview Schedule </a>
+      <a class="nav-item" href="assigned.html"> Assigned TAs </a>
+      <a class="nav-item" href="reviews.html"> TA Reviews </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a class="nav-item active dashboard-style-3" href="profile.html"> Profile</a>
+      <a href="../kazol/login.html" class="logout-btn"> Logout</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-header">
+      <div class="header-title">
+        <h2>My Profile</h2>
+        <p>Manage your personal information</p>
+      </div>
+      <div class="header-profile">
+        <div class="dashboard-style-4">
+          <div class="dashboard-style-5 disp-name">Faculty</div>
+          <div class="dashboard-style-6 disp-dept">CSE</div>
+        </div>
+        <div class="avatar sidebar-avatar">F</div>
+      </div>
+    </header>
+    
+    <div class="page-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <input type="file" id="profile-upload" style="display:none;" accept="image/jpeg, image/png, image/webp, image/jpg">
+                <div class="large-avatar" id="avatar-container" title="Click to upload picture">F</div>
+                <div>
+                    <h2 class="disp-name" style="margin: 0 0 5px 0;">Faculty Name</h2>
+                    <p style="margin: 0; color: #666;" class="disp-dept">Department</p>
+                </div>
+            </div>
+            
+            <form id="profile-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Faculty ID (System Defined)</label>
+                        <input type="text" name="university_id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Department</label>
+                        <input type="text" name="department">
+                    </div>
+                    <div class="form-group">
+                        <label>Office / Address</label>
+                        <input type="text" name="address">
+                    </div>
+                </div>
+                <div style="margin-top: 20px; text-align: right;">
+                    <button type="button" class="btn-primary" id="save-profile-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </main>
+  
+  <div id="js-notice" style="display:none;"></div>
+  
+  <script src="faculty.js"></script>
+  <script>
+      // Profile specific JS logic directly injected for simplicity, tying to existing faculty.js utilities
+      document.addEventListener("DOMContentLoaded", () => {
+          const API = "../api";
+          const saveBtn = document.getElementById("save-profile-btn");
+          const avatarContainer = document.getElementById("avatar-container");
+          const fileInput = document.getElementById("profile-upload");
+          
+          function render(data) {
+              document.querySelectorAll(".disp-name").forEach(el => el.textContent = data.name || 'Faculty');
+              document.querySelectorAll(".disp-dept").forEach(el => el.textContent = data.department || 'CSE');
+              
+              if(data.profile_picture && data.profile_picture !== 'default.png') {
+                  const imgUrl = `../uploads/profiles/${data.profile_picture}`;
+                  avatarContainer.innerHTML = `<img src="${imgUrl}">`;
+                  avatarContainer.style.background = "none";
+                  document.querySelector(".sidebar-avatar").innerHTML = `<img src="${imgUrl}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+              } else {
+                  avatarContainer.innerHTML = (data.name || 'F')[0].toUpperCase();
+              }
+              
+              const f = document.getElementById("profile-form");
+              f.name.value = data.name || '';
+              f.email.value = data.email || '';
+              f.university_id.value = data.university_id || '';
+              f.phone.value = data.phone || '';
+              f.department.value = data.department || '';
+              f.address.value = data.address || '';
+              
+              localStorage.setItem("uiu_user", JSON.stringify(data));
+          }
+          
+          fetch(`${API}/profile.php`).then(r => r.json()).then(data => {
+              if(data.success) render(data.profile);
+          });
+          
+          saveBtn.addEventListener("click", () => {
+              saveBtn.textContent = "Saving...";
+              const fd = new FormData(document.getElementById("profile-form"));
+              const obj = {};
+              fd.forEach((v,k) => obj[k] = v);
+              
+              fetch(`${API}/profile.php`, {
+                  method: "POST",
+                  headers: {"Content-Type": "application/json"},
+                  body: JSON.stringify(obj)
+              }).then(r => r.json()).then(res => {
+                  if(res.success) {
+                      alert("Profile updated!");
+                      render(res.profile);
+                  } else {
+                      alert(res.message);
+                  }
+                  saveBtn.textContent = "Save Changes";
+              }).catch(() => { alert("Error"); saveBtn.textContent = "Save Changes"; });
+          });
+          
+          avatarContainer.addEventListener("click", () => fileInput.click());
+          fileInput.addEventListener("change", function() {
+              if(!this.files[0]) return;
+              const fd = new FormData();
+              fd.append("profile_picture", this.files[0]);
+              
+              avatarContainer.style.opacity = "0.5";
+              fetch(`${API}/profile.php`, {
+                  method: "POST", body: fd
+              }).then(r => r.json()).then(res => {
+                  avatarContainer.style.opacity = "1";
+                  if(res.success) {
+                      alert("Picture updated!");
+                      const imgUrl = `../uploads/profiles/${res.profile_picture}`;
+                      avatarContainer.innerHTML = `<img src="${imgUrl}">`;
+                      avatarContainer.style.background = "none";
+                      document.querySelector(".sidebar-avatar").innerHTML = `<img src="${imgUrl}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+                  } else {
+                      alert(res.message);
+                  }
+              });
+          });
+      });
+  </script>
+</body>
+</html>

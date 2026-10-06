@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TA Portal - My Profile</title>
     <link rel="stylesheet" href="student_profile.css" />
+    <style>
+      .edit-input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; margin-top: 4px; box-sizing: border-box; }
+      .btn-primary { background-color: #d85c27; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 15px;}
+      .btn-primary:hover { background-color: #c04918; }
+      .large-avatar { cursor: pointer; position: relative; overflow: hidden; }
+      .large-avatar img { width: 100%; height: 100%; object-fit: cover; }
+      .large-avatar:hover::after { content: 'Upload'; position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 12px; text-align: center; padding: 4px 0; }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -25,113 +33,116 @@
           <a href="my_applications.html" class="menu-item">My Applications</a>
           <a href="student_profile.html" class="menu-item active">My Profile</a>
           <a href="assigned_task.html" class="menu-item">Assigned Task</a>
+          <a href="appointment_letter.html" class="menu-item">Appointment Letter</a>
         </div>
 
         <div class="logout">
-          <a href="../kazol/login.html">Logout</a>
+          <a href="javascript:void(0)" onclick="logout()">Logout</a>
         </div>
       </div>
 
       <div class="main">
-        <div class="page-header">
-          <h1>My Profile</h1>
-          <p>View your student and academic information</p>
+        <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h1>My Profile</h1>
+            <p>View and edit your personal information</p>
+          </div>
+          <button class="btn-primary" id="save-profile-btn" style="display:none;">Save Profile</button>
+          <button class="btn-primary" id="edit-profile-btn">Edit Profile</button>
         </div>
 
         <div class="profile-header">
-          <div class="large-avatar">T</div>
+          <input type="file" id="profile-upload" style="display:none;" accept="image/jpeg, image/png, image/webp, image/jpg">
+          <div class="large-avatar" id="avatar-container" title="Click to upload picture">T</div>
 
           <div>
-            <h2>Tanjim Tazwar</h2>
-            <p>Student ID: 011222146</p>
-            <span>CSE • Active Student</span>
+            <h2 id="disp-name">Tanjim Tazwar</h2>
+            <p id="disp-id">Student ID: 011222146</p>
+            <span id="disp-dept">CSE • Active Student</span>
           </div>
         </div>
 
-        <div class="info-card">
-          <h2>Personal Information</h2>
-
-          <div class="info-grid">
-            <div>
-              <label>Full Name</label>
-              <p>Tanjim Tazwar</p>
-            </div>
-
-            <div>
-              <label>Student ID</label>
-              <p>011222146</p>
-            </div>
-
-            <div>
-              <label>Department</label>
-              <p>Computer Science & Engineering</p>
-            </div>
-
-            <div>
-              <label>Email</label>
-              <p>tkhan222146@bscse.uiu.ac.bd</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <h2>Academic Information</h2>
-
-          <div class="info-grid">
-            <div>
-              <label>CGPA</label>
-              <p>3.55</p>
-            </div>
-
-            <div>
-              <label>Completed Credits</label>
-              <p>104</p>
-            </div>
-
-            <div>
-              <label>Current Semester</label>
-              <p>10th Fall 2026</p>
-            </div>
-
-            <div>
-              <label>Academic Standing</label>
-              <p class="good">Good Standing</p>
+        <form id="profile-form">
+          <div class="info-card">
+            <h2>Personal Information</h2>
+            <div class="info-grid">
+              <div>
+                <label>Full Name</label>
+                <p class="disp-field" id="val-name">Tanjim Tazwar</p>
+                <input class="edit-input edit-field" type="text" name="name" style="display:none;">
+              </div>
+              <div>
+                <label>Student ID</label>
+                <p class="disp-field" id="val-uid">011222146</p>
+                <input class="edit-input edit-field" type="text" name="university_id" style="display:none;">
+              </div>
+              <div>
+                <label>Email</label>
+                <p class="disp-field" id="val-email">tkhan222146@bscse.uiu.ac.bd</p>
+                <input class="edit-input edit-field" type="email" name="email" style="display:none;">
+              </div>
+              <div>
+                <label>Phone</label>
+                <p class="disp-field" id="val-phone">Not Provided</p>
+                <input class="edit-input edit-field" type="text" name="phone" style="display:none;">
+              </div>
+              <div>
+                <label>Address</label>
+                <p class="disp-field" id="val-address">Not Provided</p>
+                <input class="edit-input edit-field" type="text" name="address" style="display:none;">
+              </div>
             </div>
           </div>
-        </div>
+
+          <div class="info-card">
+            <h2>Academic Information</h2>
+            <div class="info-grid">
+              <div>
+                <label>Program</label>
+                <p class="disp-field" id="val-program">B.Sc. in CSE</p>
+                <input class="edit-input edit-field" type="text" name="program" style="display:none;">
+              </div>
+              <div>
+                <label>Department</label>
+                <p class="disp-field" id="val-dept">Computer Science & Engineering</p>
+                <input class="edit-input edit-field" type="text" name="department" style="display:none;">
+              </div>
+              <div>
+                <label>Current Semester</label>
+                <p class="disp-field" id="val-semester">Fall 2026</p>
+                <input class="edit-input edit-field" type="text" name="semester" style="display:none;">
+              </div>
+              <div>
+                <label>CGPA</label>
+                <p class="disp-field" id="val-cgpa">N/A</p>
+                <input class="edit-input edit-field" type="number" step="0.01" min="0" max="4.00" name="cgpa" style="display:none;">
+              </div>
+            </div>
+          </div>
+        </form>
 
         <div class="info-card">
           <h2>TA / UGA Information</h2>
-
           <div class="info-grid">
             <div>
               <label>Role</label>
-              <p>UGA</p>
+              <p>TA</p>
             </div>
-
             <div>
               <label>Assigned Course</label>
-              <p>Database Systems</p>
+              <p id="ta-course">None</p>
             </div>
-
             <div>
               <label>Course Code</label>
-              <p>CSE 4141</p>
+              <p id="ta-code">-</p>
             </div>
-
             <div>
               <label>Faculty</label>
-              <p>Dr. Rahman</p>
+              <p id="ta-faculty">-</p>
             </div>
-
-            <div>
-              <label>Workload</label>
-              <p>4 Hours / Week</p>
-            </div>
-
             <div>
               <label>Status</label>
-              <p class="active-status">Active</p>
+              <p id="ta-status">Inactive</p>
             </div>
           </div>
         </div>
@@ -140,3 +151,4 @@
     <script src="student.js"></script>
   </body>
 </html>
+

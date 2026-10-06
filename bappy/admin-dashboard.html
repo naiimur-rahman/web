@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -27,10 +27,8 @@
       </a>
     </nav>
     <div class="sidebar-footer">
-      <div class="nav-item" style="margin-bottom: 15px;">
-        <span>👤</span> Dr. Ayesha Karim
-      </div>
-      <a href="../index.html" class="logout-btn"><span>🚪</span> Logout</a>
+      <a class="nav-item" href="profile.html"><span>👤</span> Profile</a>
+      <a href="javascript:void(0)" onclick="logout()" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
 
@@ -111,89 +109,38 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="student-info">
-                  <div>
-                    <div class="student-name">CS 201 — Data Structures</div>
-                    <div class="student-id">Fall 2026 · 2nd year course</div>
-                  </div>
-                </div>
-              </td>
-              <td class="dashboard-style-19">3</td>
-              <td class="dashboard-style-19">14</td>
-              <td>Sep 18, 2026</td>
-              <td><span class="badge badge-pending">Reviewing</span></td>
-              <td><a href="shortlist-candidates.html" class="action-link">Shortlist →</a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="student-info">
-                  <div>
-                    <div class="student-name">CS 340 — Operating Systems</div>
-                    <div class="student-id">Fall 2026 · 3rd year course</div>
-                  </div>
-                </div>
-              </td>
-              <td class="dashboard-style-19">2</td>
-              <td class="dashboard-style-19">9</td>
-              <td>Sep 20, 2026</td>
-              <td><span class="badge badge-pending">Reviewing</span></td>
-              <td><a href="shortlist-candidates.html" class="action-link">Shortlist →</a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="student-info">
-                  <div>
-                    <div class="student-name">MATH 150 — Calculus I</div>
-                    <div class="student-id">Fall 2026 · 1st year course</div>
-                  </div>
-                </div>
-              </td>
-              <td class="dashboard-style-19">4</td>
-              <td class="dashboard-style-19">11</td>
-              <td>Sep 22, 2026</td>
-              <td><span class="badge badge-shortlisted">Accepting applicants</span></td>
-              <td><a href="create-vacancy.html" class="action-link">Edit →</a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="student-info">
-                  <div>
-                    <div class="student-name">CS 115 — Intro to Programming</div>
-                    <div class="student-id">Fall 2026 · 1st year course</div>
-                  </div>
-                </div>
-              </td>
-              <td class="dashboard-style-19">3</td>
-              <td class="dashboard-style-19">0</td>
-              <td>Sep 30, 2026</td>
-              <td><span class="badge badge-completed">Draft</span></td>
-              <td><a href="create-vacancy.html" class="action-link">Continue →</a></td>
-            </tr>
+            <!-- JS dynamically injects vacancies here -->
           </tbody>
         </table>
       </div>
 
-      <div class="table-container">
+            <div class="table-container" style="margin-bottom: 30px;">
+        <div class="table-header-area">
+          <h3>Pending Student Verifications</h3>
+          <a href="verify-students.html" class="hint action-link" style="font-size:13px; color:#17437a;">View all &rarr;</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Student Info</th>
+              <th>Department</th>
+              <th>CGPA</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="unverified-students-tbody">
+            <tr><td colspan="4" style="text-align:center;padding:20px;color:#888;">Loading students...</td></tr>
+          </tbody>
+        </table>
+      </div>
+<div class="table-container">
         <div class="table-header-area">
           <h3>Recent Activity</h3>
           <span class="hint" style="font-size:12px; color:#888;">Last 24 hours</span>
         </div>
         <table>
-          <tbody>
-            <tr>
-              <td class="dashboard-style-19" style="width:200px; color:#555;">10:42 AM</td>
-              <td>Appointment letter for <strong>Nabila Sultana</strong> (CS 201) was generated and emailed.</td>
-            </tr>
-            <tr>
-              <td class="dashboard-style-19" style="width:200px; color:#555;">9:15 AM</td>
-              <td><strong>Tanvir Ahmed</strong> was moved to the shortlist for MATH 150.</td>
-            </tr>
-            <tr>
-              <td class="dashboard-style-19" style="width:200px; color:#555;">Yesterday, 4:50 PM</td>
-              <td>New vacancy <strong>CS 340 — Operating Systems</strong> was published.</td>
-            </tr>
+          <tbody id="activity-tbody">
+            <!-- JS dynamically injects activity here -->
           </tbody>
         </table>
       </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -27,10 +27,8 @@
       </a>
     </nav>
     <div class="sidebar-footer">
-      <div class="nav-item" style="margin-bottom: 15px;">
-        <span>👤</span> Dr. Ayesha Karim
-      </div>
-      <a href="../index.html" class="logout-btn"><span>🚪</span> Logout</a>
+      <a class="nav-item" href="profile.html"><span>👤</span> Profile</a>
+      <a href="javascript:void(0)" onclick="logout()" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
 
@@ -38,36 +36,35 @@
     <header class="top-header">
       <div class="header-title">
         <h2>Generate appointment letter</h2>
-        <p>Confirm the details below, then generate a letter for Nabila Sultana.</p>
+        <p id="letter-subtitle">Select a candidate to generate their appointment letter.</p>
       </div>
       <div class="header-profile">
         <div class="dashboard-style-4">
-          <div class="dashboard-style-5">Dr. Ayesha Karim</div>
+          <div class="dashboard-style-5" id="admin-name">Dr. Ayesha Karim</div>
           <div class="dashboard-style-6">HIRING COORDINATOR</div>
         </div>
-        <div class="avatar" style="background:#17437a;">AK</div>
+        <div class="avatar" style="background:#17437a;" id="admin-avatar">AK</div>
       </div>
     </header>
 
     <div class="page-container">
       <div class="letter-layout">
         
-        <form class="card" onsubmit="return false;" style="padding:0;">
+        <form class="card" id="letter-form" onsubmit="return false;" style="padding:0;">
           <div class="table-header-area">
             <h3>Letter details</h3>
           </div>
           <div style="padding: 25px;">
             <div class="field">
-              <label for="candidate">Candidate</label>
+              <label for="candidate">Candidate (Selected TAs)</label>
               <select id="candidate">
-                <option>Nabila Sultana — CS 201</option>
-                <option>Tanvir Ahmed — CS 201</option>
+                <option value="">Loading candidates...</option>
               </select>
             </div>
 
             <div class="field">
               <label for="position-title">Position title</label>
-              <input type="text" id="position-title" value="Teaching Assistant, CS 201 — Data Structures">
+              <input type="text" id="position-title" placeholder="e.g. Teaching Assistant, CSE 4165">
             </div>
 
             <div class="field">
@@ -82,34 +79,36 @@
 
             <div class="field">
               <label for="letter-start">Start date</label>
-              <input type="date" id="letter-start" value="2026-09-29">
+              <input type="date" id="letter-start">
             </div>
 
             <div class="field">
               <label for="letter-end">End date</label>
-              <input type="date" id="letter-end" value="2026-12-19">
+              <input type="date" id="letter-end">
             </div>
 
             <div class="field">
               <label for="report-to">Reports to</label>
-              <input type="text" id="report-to" value="Dr. Ayesha Karim, Course Instructor">
+              <input type="text" id="report-to" placeholder="e.g. Dr. Ayesha Karim, Course Instructor">
             </div>
 
             <div class="field-note">
-              Once generated, the letter is emailed to the candidate's registered address and a copy is stored under their applicant record.
+              Once generated, the letter is saved in the system and a copy is stored under the applicant's record.
             </div>
+
+            <div id="letter-status-msg" style="display:none; padding:10px; border-radius:6px; margin-top:10px; font-size:13px;"></div>
 
             <div class="form-actions" style="justify-content:space-between; margin-top: 20px;">
               <a href="shortlist-candidates.html" class="btn btn-outline">Back to shortlist</a>
               <div style="display:flex; gap:10px;">
-                <button type="button" class="btn btn-outline">Save draft</button>
-                <button type="button" class="btn btn-primary">Generate &amp; send</button>
+                <button type="button" class="btn btn-primary" id="generate-btn">Generate &amp; Save</button>
               </div>
             </div>
           </div>
         </form>
 
-        <div class="letter-sheet">
+        <!-- Live letter preview (updates as form changes) -->
+        <div class="letter-sheet" id="letter-preview">
           <div class="letterhead">
             <div>
               <div class="uni-name">United International University</div>
@@ -118,39 +117,39 @@
             <div class="uni-seal">UIU</div>
           </div>
 
-          <div class="ref-line">Ref: UIU/CS/TA/2026/014 &nbsp;·&nbsp; Date: September 12, 2026</div>
+          <div class="ref-line" id="preview-ref">Ref: UIU/CS/TA/2026/—&nbsp;·&nbsp; Date: <span id="preview-date">—</span></div>
 
-          <p>Nabila Sultana<br>Student ID 20-41032<br>B.Sc. in Computer Science, 3rd year</p>
+          <p id="preview-candidate">Candidate Name<br>Student ID<br>B.Sc. in Computer Science</p>
 
-          <p>Dear Ms. Sultana,</p>
+          <p id="preview-greeting">Dear Candidate,</p>
 
-          <p>
-            I am pleased to offer you the position of <strong>Teaching Assistant for CS 201 — Data Structures</strong>
+          <p id="preview-body">
+            I am pleased to offer you the position of <strong id="preview-title">Teaching Assistant</strong>
             for the Fall 2026 term. This letter confirms the terms of your appointment.
           </p>
 
-          <p>
-            You will work <strong>10 hours per week</strong>, beginning <strong>September 29, 2026</strong> and
-            concluding <strong>December 19, 2026</strong>, at a monthly stipend of <strong>BDT 8,000</strong>,
-            disbursed at the end of each month. Your duties will include leading two weekly lab sections,
-            holding office hours, and grading assignments in a timely manner, under the supervision of
-            Dr. Ayesha Karim, Course Instructor.
+          <p id="preview-terms">
+            You will work <strong id="preview-hours">10 hours per week</strong>, beginning <strong id="preview-start">—</strong> and
+            concluding <strong id="preview-end">—</strong>, at a monthly stipend of <strong id="preview-stipend">BDT 8,000</strong>,
+            disbursed at the end of each month. Your duties will include leading laboratory sessions,
+            holding office hours, and grading assignments, under the supervision of <span id="preview-supervisor">the assigned faculty</span>.
           </p>
 
           <p>
-            Please confirm your acceptance by replying to this email no later than <strong>September 22, 2026</strong>.
+            Please confirm your acceptance no later than <strong id="preview-deadline">—</strong>.
             We look forward to working with you this term.
           </p>
 
           <div class="sig-block">
             <div class="sig-line"></div>
-            <p style="margin:0;">Dr. Ayesha Karim<br>Hiring Coordinator, Department of Computer Science</p>
+            <p style="margin:0;" id="preview-sig">Dr. Ayesha Karim<br>Hiring Coordinator, Department of Computer Science</p>
           </div>
         </div>
 
       </div>
     </div>
   </main>
+
   <script src="admin.js"></script>
 </body>
 </html>

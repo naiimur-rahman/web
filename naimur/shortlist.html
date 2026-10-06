@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 
 <html lang="en">
 
@@ -36,7 +36,7 @@
     </nav>
     <div class="sidebar-footer">
       <div class="nav-item shortlist-style-3"><span>👤</span> Profile</div>
-      <a href="../kazol/login.html" class="logout-btn"><span>🚪</span> Logout</a>
+      <a href="javascript:void(0)" onclick="logout()" class="logout-btn"><span>🚪</span> Logout</a>
     </div>
   </aside>
   <main class="main-content">
@@ -84,29 +84,11 @@
           <div class="shortlist-style-19">
             <div class="shortlist-style-20">
               <span class="shortlist-style-21">Current Shortlist</span>
-              <span class="shortlist-style-22">2 Students</span>
+              <span class="shortlist-style-22" id="shortlist-count">Loading...</span>
             </div>
-            <div class="shortlist-style-23">
-              <div class="student-info shortlist-style-24">
-                <div class="student-initials shortlist-style-25">MT</div>
-                <div>
-                  <div class="student-name shortlist-style-26">
-                    Md. Tauhid Tazwar Khan
-                  </div>
-                </div>
-              </div>
-              <span class="shortlist-style-27">✓</span>
-            </div>
-            <div class="shortlist-style-28">
-              <div class="student-info shortlist-style-24">
-                <div class="student-initials shortlist-style-29">NJ</div>
-                <div>
-                  <div class="student-name shortlist-style-26">
-                    Nusrat Jahan
-                  </div>
-                </div>
-              </div>
-              <span class="shortlist-style-27">✓</span>
+            <!-- JS dynamically injects shortlisted students here -->
+            <div id="shortlist-panel-container">
+              <p style="padding:10px; color:#888; text-align:center;">Loading...</p>
             </div>
           </div>
         </div>
@@ -127,60 +109,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div class="student-name">Md. Tauhid Tazwar Khan</div>
-                  <div class="student-id">01122212345</div>
-                </td>
-                <td class="shortlist-style-32">3.82</td>
-                <td><span class="badge shortlist-style-33">Eligible</span></td>
-                <td>
-                  <button class="btn btn-primary shortlist-style-34">
-                    + Shortlist
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-name">Nusrat Jahan</div>
-                  <div class="student-id">01122114567</div>
-                </td>
-                <td class="shortlist-style-32">3.78</td>
-                <td><span class="badge shortlist-style-33">Eligible</span></td>
-                <td>
-                  <button class="btn btn-primary shortlist-style-34">
-                    + Shortlist
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-name">Tanvir Hasan</div>
-                  <div class="student-id">01122011234</div>
-                </td>
-                <td class="shortlist-style-32">3.65</td>
-                <td><span class="badge shortlist-style-33">Eligible</span></td>
-                <td>
-                  <button class="btn btn-primary shortlist-style-34">
-                    + Shortlist
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="student-name shortlist-style-35">
-                    Farhan Ahmed
-                  </div>
-                  <div class="student-id">01123333456</div>
-                </td>
-                <td class="shortlist-style-36">3.20</td>
-                <td>
-                  <span class="badge shortlist-style-37">Not Eligible</span>
-                </td>
-                <td>
-                  <button class="btn shortlist-style-38">Shortlist</button>
-                </td>
-              </tr>
+              <!-- JS dynamically injects pending applications here -->
             </tbody>
           </table>
           <div class="shortlist-style-39">
