@@ -1,19 +1,12 @@
 <?php
-// ================================================
-// api/letters.php — Appointment Letters CRUD
-// UIU TA Management System
-// ================================================
 
-// 1. Start session and set headers
 session_start();
 header('Content-Type: application/json');
 
-// 2. Include database connection
 require_once 'db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// ── GET: Fetch appointment letters ───────────────────────────────
 if ($method === 'GET') {
     $student_uni_id = $_GET['student_uni_id'] ?? null;
     $ref_no         = $_GET['ref_no']         ?? null;
@@ -33,7 +26,6 @@ if ($method === 'GET') {
     exit;
 }
 
-// ── POST: Generate a new appointment letter ───────────────────────
 if ($method === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
@@ -46,18 +38,15 @@ if ($method === 'POST') {
     $end_date       = trim($data['end_date']        ?? date('Y-m-d', strtotime('+3 months')));
     $reports_to     = trim($data['reports_to']      ?? 'Dr. Ayesha Karim, Course Instructor');
 
-    // 3. Validate required fields
     if (empty($student_name) || empty($course_title)) {
         echo json_encode(["success" => false, "message" => "Student name and course title are required"]);
         exit;
     }
 
-    // 4. Generate a unique reference number
     $year  = date('Y');
     $count = (int)$pdo->query("SELECT COUNT(*) FROM appointment_letters")->fetchColumn() + 1;
     $ref   = "UIU/CS/TA/$year/" . str_pad($count, 3, '0', STR_PAD_LEFT);
 
-    // 5. Insert letter record
     $stmt = $pdo->prepare(
         "INSERT INTO appointment_letters
          (ref_no, student_name, student_uni_id, course_title, weekly_hours, stipend,
@@ -69,10 +58,9 @@ if ($method === 'POST') {
         $weekly_hours, $stipend, $start_date, $end_date, $reports_to
     ]);
 
-    // 6. Also mark the student's application as Selected (if student_uni_id provided)
     if ($student_uni_id) {
         $stmt2 = $pdo->prepare(
-            "UPDATE applications SET status = 'Selected' 
+            "UPDATE applications SET status = 'Selected'
              WHERE student_uni_id = ? AND status IN ('Shortlisted', 'Interview Scheduled')"
         );
         $stmt2->execute([$student_uni_id]);
@@ -87,7 +75,6 @@ if ($method === 'POST') {
     exit;
 }
 
-// ── PUT: Update letter status ─────────────────────────────────────
 if ($method === 'PUT') {
     $data   = json_decode(file_get_contents('php://input'), true);
     $id     = $data['id']     ?? null;
@@ -106,3 +93,4 @@ if ($method === 'PUT') {
 
 echo json_encode(["success" => false, "message" => "Invalid request method"]);
 ?>
+

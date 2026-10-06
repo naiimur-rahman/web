@@ -1,16 +1,10 @@
 <?php
-// ================================================
-// api/db.php — Centralized Database Connection
-// UIU TA Management System
-// ================================================
 
-// 1. Database configuration
 $host     = "localhost";
 $dbname   = "uiu_ta_management";
 $username = "root";
-$password = "";          // Change to "1234" if your MySQL root uses that password
+$password = "";
 
-// 2. Create PDO connection with error handling
 try {
     $pdo = new PDO(
         "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
@@ -23,7 +17,7 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    // Return JSON error instead of crashing with raw PHP error
+
     header('Content-Type: application/json');
     http_response_code(500);
     echo json_encode([
@@ -33,3 +27,4 @@ try {
     exit;
 }
 ?>
+

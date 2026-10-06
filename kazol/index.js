@@ -1,14 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Fetch real notices from API
     fetch("../api/notices.php")
         .then(res => res.json())
         .then(data => {
             if (data.success && data.notices && data.notices.length > 0) {
                 const container = document.querySelector(".notice-cards");
                 if (container) {
-                    container.innerHTML = ""; // Clear placeholders
+                    container.innerHTML = "";
 
-                    // Take up to 4 notices for the homepage
                     data.notices.slice(0, 4).forEach(notice => {
                         const card = document.createElement("div");
                         card.className = "notice-card";
@@ -33,12 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                 }
             } else {
-                // If no notices in DB, attach listeners to existing HTML placeholders
                 attachFallbackListeners();
             }
         })
         .catch(err => {
-            // Fallback if API fails
             attachFallbackListeners();
         });
 
@@ -46,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (viewAll) {
         viewAll.addEventListener("click", function(e) {
             e.preventDefault();
-            // Fetch all and show in an alert or a modal. For simplicity, we just fetch from API.
             fetch("../api/notices.php")
                 .then(r => r.json())
                 .then(data => {
@@ -64,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Check if user is already logged in, update navigation
     try {
         const user = JSON.parse(localStorage.getItem("uiu_user"));
         if (user) {

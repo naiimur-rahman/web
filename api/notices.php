@@ -1,19 +1,12 @@
 <?php
-// ================================================
-// api/notices.php — Notice Board
-// UIU TA Management System
-// ================================================
 
-// 1. Start session and set headers
 session_start();
 header('Content-Type: application/json');
 
-// 2. Include database connection
 require_once 'db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// ── GET: Fetch notices ────────────────────────────────────────────
 if ($method === 'GET') {
     $limit = (int)($_GET['limit'] ?? 20);
     if ($limit < 1 || $limit > 100) $limit = 20;
@@ -26,7 +19,6 @@ if ($method === 'GET') {
     exit;
 }
 
-// ── POST: Create a new notice (admin/faculty only) ────────────────
 if ($method === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
@@ -54,7 +46,6 @@ if ($method === 'POST') {
     exit;
 }
 
-// ── DELETE: Remove a notice ───────────────────────────────────────
 if ($method === 'DELETE') {
     $data = json_decode(file_get_contents('php://input'), true);
     $id   = $data['id'] ?? null;
@@ -72,3 +63,4 @@ if ($method === 'DELETE') {
 
 echo json_encode(["success" => false, "message" => "Invalid request method"]);
 ?>
+

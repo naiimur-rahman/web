@@ -1,26 +1,18 @@
 <?php
-// ================================================
-// api/applications.php — TA Application CRUD
-// UIU TA Management System
-// ================================================
 
-// 1. Start session and set headers
 session_start();
 header('Content-Type: application/json');
 
-// 2. Include database connection
 require_once 'db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// ── GET: Fetch applications ───────────────────────────────────────
 if ($method === 'GET') {
     $student_id    = $_GET['student_id']    ?? null;
     $vacancy_id    = $_GET['vacancy_id']    ?? null;
     $status_filter = $_GET['status']        ?? null;
     $id            = $_GET['id']            ?? null;
 
-    // Get a single application with full details
     if ($id) {
         $stmt = $pdo->prepare(
             "SELECT a.*, v.course_title, v.course_code, v.instructor_name, v.stipend, v.weekly_hours
@@ -34,7 +26,6 @@ if ($method === 'GET') {
         exit;
     }
 
-    // Build query based on filters
     $where  = [];
     $params = [];
 
@@ -67,12 +58,10 @@ if ($method === 'GET') {
     exit;
 }
 
-// ── POST: Submit application OR update status ─────────────────────
 if ($method === 'POST') {
     $data   = json_decode(file_get_contents('php://input'), true);
     $action = $_GET['action'] ?? ($data['action'] ?? '');
 
-    // --- Update application status (shortlist / accept / reject) ---
     if ($action === 'status') {
         $app_id = $data['application_id'] ?? null;
         $status = $data['status'] ?? null;
@@ -82,7 +71,6 @@ if ($method === 'POST') {
             exit;
         }
 
-        // Validate allowed statuses
         $allowed = ['Pending', 'Reviewed', 'Shortlisted', 'Interview Scheduled', 'Selected', 'Rejected'];
         if (!in_array($status, $allowed)) {
             echo json_encode(["success" => false, "message" => "Invalid status value"]);
@@ -96,7 +84,6 @@ if ($method === 'POST') {
         exit;
     }
 
-    // --- Submit a new application ---
     $vacancy_id     = (int)($data['vacancy_id']     ?? 0);
     $student_id     = (int)($data['student_id']     ?? 0);
     $student_name   = trim($data['student_name']    ?? '');
@@ -106,13 +93,11 @@ if ($method === 'POST') {
     $motivation     = trim($data['motivation']       ?? '');
     $skills         = trim($data['skills']           ?? '');
 
-    // 3. Validate required fields
     if (!$vacancy_id || !$student_id || empty($student_name)) {
         echo json_encode(["success" => false, "message" => "Missing required application fields"]);
         exit;
     }
 
-    // 4. Prevent duplicate applications for the same vacancy
     $checkStmt = $pdo->prepare(
         "SELECT id FROM applications WHERE vacancy_id = ? AND student_id = ? LIMIT 1"
     );
@@ -122,7 +107,6 @@ if ($method === 'POST') {
         exit;
     }
 
-    // 5. Check that the vacancy is still open
     $vacStmt = $pdo->prepare("SELECT status, deadline FROM vacancies WHERE id = ?");
     $vacStmt->execute([$vacancy_id]);
     $vacancy = $vacStmt->fetch();
@@ -135,7 +119,6 @@ if ($method === 'POST') {
         exit;
     }
 
-    // 6. Insert application
     $stmt = $pdo->prepare(
         "INSERT INTO applications
          (vacancy_id, student_id, student_name, student_uni_id, email, cgpa, motivation, skills, status)
@@ -155,7 +138,6 @@ if ($method === 'POST') {
     exit;
 }
 
-// ── DELETE: Remove an application ────────────────────────────────
 if ($method === 'DELETE') {
     $data  = json_decode(file_get_contents('php://input'), true);
     $id    = $data['id'] ?? null;
@@ -173,3 +155,4 @@ if ($method === 'DELETE') {
 
 echo json_encode(["success" => false, "message" => "Invalid request method"]);
 ?>
+

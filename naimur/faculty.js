@@ -1,12 +1,6 @@
-﻿// ========================================================
-// naimur/faculty.js — Faculty Portal JavaScript
-// UIU TA Management System
-// ========================================================
 
-// ─── 1. API BASE URL ────────────────────────────────────
 const API = "../api";
 
-// ─── 2. GET LOGGED-IN USER ───────────────────────────────────────
 function getUser() {
     try {
         return JSON.parse(localStorage.getItem("uiu_user")) || null;
@@ -15,7 +9,6 @@ function getUser() {
     }
 }
 
-// ─── 3. REQUIRE FACULTY OR ADMIN LOGIN ───────────────────────────
 function requireFacultyLogin() {
     const user = getUser();
     if (!user) {
@@ -40,7 +33,6 @@ function requireFacultyLogin() {
     return user;
 }
 
-// ─── 4. SHOW INLINE NOTIFICATION ─────────────────────────────────
 function showNotice(message, type = "success") {
     let notice = document.getElementById("js-notice");
     if (!notice) {
@@ -64,7 +56,6 @@ function showNotice(message, type = "success") {
     }, 3500);
 }
 
-// ─── 5. LOGOUT ────────────────────────────────────────────────────
 function logout() {
     localStorage.removeItem("uiu_user");
     fetch(`${API}/auth.php?action=logout`).finally(() => {
@@ -72,7 +63,6 @@ function logout() {
     });
 }
 
-// ─── 6. STATUS BADGE CSS CLASS ───────────────────────────────────
 function getBadgeClass(status) {
     const map = {
         "Pending":             "badge-pending",
@@ -85,7 +75,6 @@ function getBadgeClass(status) {
     return map[status] || "badge-pending";
 }
 
-// ─── 7. SEARCH FILTER for tables ─────────────────────────────────
 function initTableSearch(inputSelector) {
     const input = document.querySelector(inputSelector);
     if (!input) return;
@@ -97,16 +86,10 @@ function initTableSearch(inputSelector) {
     });
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: FACULTY DASHBOARD
-// ─────────────────────────────────────────────────────────────────
 function initDashboard(user) {
-    // Update faculty name in header
     const nameEl = document.querySelector(".dashboard-style-5");
     if (nameEl) nameEl.textContent = user.name || "Faculty";
 
-    // Load real stats
     fetch(`${API}/stats.php`)
         .then(r => r.json())
         .then(data => {
@@ -121,7 +104,6 @@ function initDashboard(user) {
         })
         .catch(() => {});
 
-    // Load recent applicants table
     fetch(`${API}/applications.php`)
         .then(r => r.json())
         .then(data => {
@@ -162,7 +144,6 @@ function initDashboard(user) {
                 tbody.appendChild(tr);
             });
 
-            // Review button → go to applicants page
             tbody.querySelectorAll("button[data-id]").forEach(btn => {
                 btn.addEventListener("click", () => {
                     window.location.href = "applicants.html";
@@ -172,14 +153,9 @@ function initDashboard(user) {
         .catch(() => {});
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: APPLICANTS (applicants.html)
-// ─────────────────────────────────────────────────────────────────
 function initApplicants(user) {
     initTableSearch(".applicants-style-22");
 
-    // Contact Coordinator Button
     const contactBtn = document.querySelector(".applicants-style-21");
     if (contactBtn) {
         contactBtn.addEventListener("click", () => {
@@ -233,7 +209,6 @@ function initApplicants(user) {
                 tbody.appendChild(tr);
             });
 
-            // Status change handler
             tbody.querySelectorAll(".status-select").forEach(sel => {
                 sel.addEventListener("change", function() {
                     const appId = this.getAttribute("data-id");
@@ -268,14 +243,12 @@ function initApplicants(user) {
             tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#c00; padding:20px;">Error loading data. Please refresh.</td></tr>`;
         });
 
-    // Bottom: Shortlist Selected button
     const shortlistBtn = document.querySelector(".applicants-style-25");
     if (shortlistBtn) {
         shortlistBtn.addEventListener("click", () => {
             window.location.href = "shortlist.html";
         });
     }
-    // Bottom: Schedule Interview button
     const scheduleBtn = document.querySelector(".applicants-style-26");
     if (scheduleBtn) {
         scheduleBtn.addEventListener("click", () => {
@@ -284,15 +257,10 @@ function initApplicants(user) {
     }
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: SHORTLISTED STUDENTS (shortlist.html)
-// ─────────────────────────────────────────────────────────────────
 function initShortlist(user) {
     const tbody = document.querySelector(".table-container table tbody");
     if (!tbody) return;
 
-    // Load pending applications (eligible to shortlist)
     fetch(`${API}/applications.php`)
         .then(r => r.json())
         .then(data => {
@@ -327,10 +295,8 @@ function initShortlist(user) {
                 });
             }
 
-            // Reload left panel shortlisted list
             loadShortlistedPanel();
 
-            // Wire shortlist buttons
             tbody.querySelectorAll(".shortlist-btn").forEach(btn => {
                 btn.addEventListener("click", function() {
                     const appId = this.getAttribute("data-id");
@@ -348,9 +314,7 @@ function initShortlist(user) {
                     .then(res => {
                         if (res.success) {
                             showNotice(`${name} has been shortlisted!`);
-                            // Remove from pending list
                             this.closest("tr").remove();
-                            // Reload shortlisted panel
                             loadShortlistedPanel();
                         } else {
                             showNotice("Failed to shortlist", "error");
@@ -366,7 +330,6 @@ function initShortlist(user) {
                 });
             });
             
-            // Bottom Action Buttons
             const scheduleBtn = document.querySelector(".shortlist-style-40");
             if (scheduleBtn) {
                 scheduleBtn.addEventListener("click", () => {
@@ -427,23 +390,16 @@ function loadShortlistedPanel() {
         .catch(() => {});
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: INTERVIEWS (interviews.html)
-// ─────────────────────────────────────────────────────────────────
 function initInterviews(user) {
     initTableSearch(".interviews-style-23");
 
-    // Fill faculty card with real user data
     const nameEl = document.getElementById("iv-faculty-name");
     if (nameEl) nameEl.textContent = user.name || "Faculty";
     const avatarEl = document.getElementById("iv-faculty-avatar");
     if (avatarEl) avatarEl.textContent = (user.name || "F").charAt(0).toUpperCase();
 
-    // Load interviews table
     loadInterviewsTable();
 
-    // Schedule new interview button
     const scheduleBtn = document.querySelector(".interviews-style-4");
     if (scheduleBtn) {
         scheduleBtn.addEventListener("click", showScheduleInterviewForm);
@@ -463,7 +419,6 @@ function loadInterviewsTable() {
 
             if (!data.success || data.interviews.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#888; padding:20px;">No interviews scheduled. Click "+ Schedule New Interview" above.</td></tr>`;
-                // Update progress
                 const progEl = document.getElementById("iv-progress");
                 if (progEl) progEl.textContent = "0";
                 const countEl = document.getElementById("iv-total-count");
@@ -474,7 +429,6 @@ function loadInterviewsTable() {
             const total    = data.interviews.length;
             const completed= data.interviews.filter(iv => iv.status === "Completed").length;
 
-            // Update progress stats
             const progEl = document.getElementById("iv-progress");
             if (progEl) progEl.textContent = `${completed}/${total}`;
             const countEl = document.getElementById("iv-total-count");
@@ -522,7 +476,6 @@ function loadInterviewsTable() {
                 tbody.appendChild(tr);
             });
 
-            // Wire status selects
             tbody.querySelectorAll(".iv-status-select").forEach(sel => {
                 sel.addEventListener("change", function() {
                     const ivId   = this.getAttribute("data-id");
@@ -547,7 +500,6 @@ function loadInterviewsTable() {
                 });
             });
 
-            // Wire Accept buttons — marks application as Selected
             tbody.querySelectorAll(".accept-btn").forEach(btn => {
                 btn.addEventListener("click", function() {
                     const appId = this.getAttribute("data-app-id");
@@ -589,7 +541,6 @@ function loadInterviewsTable() {
 }
 
 function showScheduleInterviewForm() {
-    // Simple form modal using a div overlay
     const overlay = document.createElement("div");
     overlay.id = "iv-overlay";
     overlay.style.cssText = `
@@ -598,7 +549,6 @@ function showScheduleInterviewForm() {
         align-items:center; justify-content:center;
     `;
 
-    // Load shortlisted/interview-scheduled applicants for selection
     fetch(`${API}/applications.php`)
         .then(r => r.json())
         .then(data => {
@@ -660,7 +610,6 @@ function showScheduleInterviewForm() {
                     return;
                 }
 
-                // Format time to readable string
                 const [h, m]   = time.split(":");
                 const hour     = parseInt(h);
                 const ampm     = hour >= 12 ? "PM" : "AM";
@@ -710,15 +659,9 @@ function showScheduleInterviewForm() {
         });
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: TA REVIEWS (reviews.html)
-// ─────────────────────────────────────────────────────────────────
 function initReviews(user) {
-    // Load existing reviews into left table
     loadReviewsTable();
 
-    // Stars interaction
     let selectedRating = 5;
     const stars = document.querySelectorAll(".rating-stars span");
     stars.forEach((star, index) => {
@@ -736,10 +679,9 @@ function initReviews(user) {
         });
     });
 
-    // Wire review submit button
     const submitBtn = document.querySelector("#formContent .btn-primary");
     if (submitBtn) {
-        submitBtn.onclick = null; // Remove inline onclick
+        submitBtn.onclick = null;
         submitBtn.addEventListener("click", function() {
             const taName    = document.getElementById("taName")?.innerText || "";
             const course    = document.getElementById("taCourse")?.innerText || "Web Programming";
@@ -774,7 +716,6 @@ function initReviews(user) {
             .then(res => {
                 if (res.success) {
                     showNotice("Review submitted successfully!");
-                    // Mark as reviewed in table
                     document.querySelectorAll("table tbody tr").forEach(row => {
                         if (row.innerText.includes(taName)) {
                             const badge = row.querySelector(".badge");
@@ -800,11 +741,9 @@ function initReviews(user) {
 }
 
 function loadReviewsTable() {
-    // Reviews page uses static TA list from assigned tasks — we can load from DB
     const tbody = document.querySelector("table tbody");
     if (!tbody) return;
 
-    // Load assigned TAs (Selected applications) to show in review list
     fetch(`${API}/applications.php?status=Selected`)
         .then(r => r.json())
         .then(data => {
@@ -841,7 +780,6 @@ function loadReviewsTable() {
                 tbody.appendChild(tr);
             });
 
-            // Check which already have reviews and update badge
             fetch(`${API}/reviews.php`)
                 .then(r => r.json())
                 .then(rdata => {
@@ -858,15 +796,12 @@ function loadReviewsTable() {
                     });
                 }).catch(() => {});
 
-            // Wire "Write Review" buttons
             tbody.querySelectorAll("button[data-name]").forEach(btn => {
                 btn.addEventListener("click", function() {
-                    // Show review form
                     document.getElementById("emptyState").style.display = "none";
                     document.getElementById("formContent").style.display = "block";
                     document.getElementById("taName").innerText = this.getAttribute("data-name");
 
-                    // Store uid and course for submission
                     let uidEl = document.getElementById("taUid");
                     if (!uidEl) {
                         uidEl = document.createElement("span");
@@ -890,17 +825,12 @@ function loadReviewsTable() {
         .catch(() => {});
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: ASSIGNED TAs (assigned.html)
-// ─────────────────────────────────────────────────────────────────
 function initAssigned(user) {
     const tbody = document.querySelector(".table-container table tbody");
     if (!tbody) return;
 
     tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#888; padding:20px;">Loading assigned TAs...</td></tr>`;
 
-    // Load Selected applications
     fetch(`${API}/applications.php?status=Selected`)
         .then(r => r.json())
         .then(data => {
@@ -909,14 +839,12 @@ function initAssigned(user) {
             if (!data.success || data.applications.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#888; padding:20px;">No assigned TAs yet.</td></tr>`;
 
-                // Update stat boxes
                 const statDivs = document.querySelectorAll(".assigned-style-17, .assigned-style-19, .assigned-style-21");
                 if (statDivs[0]) statDivs[0].textContent = "0";
                 if (statDivs[1]) statDivs[1].textContent = "0";
                 return;
             }
 
-            // Update stat boxes
             const totalApps = data.applications.length;
             const allAppsStmt = fetch(`${API}/applications.php`)
                 .then(r => r.json())
@@ -948,7 +876,6 @@ function initAssigned(user) {
                 tbody.appendChild(tr);
             });
 
-            // Wire "Assign Task" buttons
             tbody.querySelectorAll(".assign-task-btn").forEach(btn => {
                 btn.addEventListener("click", function() {
                     const studentId  = this.getAttribute("data-id");
@@ -962,7 +889,6 @@ function initAssigned(user) {
             tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#c00; padding:20px;">Error loading data.</td></tr>`;
         });
 
-    // Generate Appointment Letter button
     const generateBtn = document.querySelector(".btn-primary:not(.shortlist-btn)");
     if (generateBtn && generateBtn.textContent.includes("Generate")) {
         generateBtn.addEventListener("click", () => {
@@ -979,7 +905,6 @@ function initAssigned(user) {
 }
 
 function showAssignTaskForm(studentId, studentName, courseCode) {
-    // Remove existing overlay
     document.getElementById("task-overlay")?.remove();
 
     const overlay = document.createElement("div");
@@ -1065,15 +990,10 @@ function showAssignTaskForm(studentId, studentName, courseCode) {
     });
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// MAIN — Initialize based on current page
-// ─────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", function() {
     const user = requireFacultyLogin();
     if (!user) return;
 
-    // Wire logout
     document.querySelectorAll(".logout-btn").forEach(el => {
         el.href = "#";
         el.addEventListener("click", function(e) {

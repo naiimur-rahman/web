@@ -1,19 +1,12 @@
 <?php
-// ================================================
-// api/reviews.php — TA Performance Reviews
-// UIU TA Management System
-// ================================================
 
-// 1. Start session and set headers
 session_start();
 header('Content-Type: application/json');
 
-// 2. Include database connection
 require_once 'db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// ── GET: Fetch reviews ────────────────────────────────────────────
 if ($method === 'GET') {
     $student_name   = $_GET['student_name']    ?? null;
     $student_uni_id = $_GET['student_uni_id']  ?? null;
@@ -47,7 +40,6 @@ if ($method === 'GET') {
     exit;
 }
 
-// ── POST: Submit a new review ─────────────────────────────────────
 if ($method === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
@@ -60,16 +52,13 @@ if ($method === 'POST') {
     $knowledge      = trim($data['knowledge']       ?? 'Excellent - Strong grasp of concepts');
     $feedback       = trim($data['feedback']        ?? '');
 
-    // 3. Validate required fields
     if (empty($student_name) || empty($course_title)) {
         echo json_encode(["success" => false, "message" => "Student name and course title are required"]);
         exit;
     }
 
-    // Clamp rating to 1–5
     $rating = max(1, min(5, $rating));
 
-    // 4. Check if review already exists — update instead of duplicate
     $existStmt = $pdo->prepare(
         "SELECT id FROM reviews WHERE student_name = ? AND course_title = ? AND faculty_name = ? LIMIT 1"
     );
@@ -77,7 +66,7 @@ if ($method === 'POST') {
     $existing = $existStmt->fetch();
 
     if ($existing) {
-        // Update existing review
+
         $stmt = $pdo->prepare(
             "UPDATE reviews
              SET rating = ?, punctuality = ?, knowledge = ?, feedback = ?, created_at = NOW()
@@ -86,7 +75,7 @@ if ($method === 'POST') {
         $stmt->execute([$rating, $punctuality, $knowledge, $feedback, $existing['id']]);
         echo json_encode(["success" => true, "message" => "Review updated successfully"]);
     } else {
-        // Insert new review
+
         $stmt = $pdo->prepare(
             "INSERT INTO reviews
              (student_name, student_uni_id, course_title, faculty_name, rating, punctuality, knowledge, feedback)
@@ -107,3 +96,4 @@ if ($method === 'POST') {
 
 echo json_encode(["success" => false, "message" => "Invalid request method"]);
 ?>
+

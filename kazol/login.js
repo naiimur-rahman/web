@@ -65,9 +65,7 @@ function handleLogin() {
     })
     .then(data => {
         if (data.success) {
-            // Store user context in localStorage for client-side use
             localStorage.setItem("uiu_user", JSON.stringify(data.user));
-            // Redirect using the role-based path provided by auth.php
             window.location.href = data.redirect;
         } else {
             alert(data.message || "Invalid credentials!");
@@ -86,7 +84,6 @@ function handleLogin() {
     });
 }
 
-// REGISTRATION LOGIC
 function toggleReg(role) {
     document.getElementById("login-section").classList.add("hidden");
     document.getElementById("register-section").classList.remove("hidden");
@@ -150,11 +147,9 @@ function handleRegister() {
     .then(data => {
         if (data.success) {
             alert(data.message);
-            // Switch back to login and auto-fill
             toggleLogin();
             document.getElementById("username").value = email;
             document.getElementById("password").value = "";
-            // Switch role selector
             const options = document.querySelectorAll(".role-option");
             options.forEach(opt => opt.classList.remove("active"));
             options.forEach(opt => {

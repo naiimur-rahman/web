@@ -1,7 +1,3 @@
-﻿// ========================================================
-// bappy/admin.js — Admin/Hiring Coordinator JavaScript
-// UIU TA Management System
-// ========================================================
 
 const API = "../api";
 
@@ -64,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const user = requireAdminLogin();
     if (!user) return;
 
-    // Profile updates
     document.querySelectorAll(".dashboard-style-5").forEach(el => el.textContent = user.name || "Admin");
     document.querySelectorAll(".sidebar-footer .nav-item").forEach(el => {
         if(el.textContent.includes("Dr.")) el.innerHTML = `<span>👤</span> ${user.name}`;
@@ -84,9 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
     else if (path.includes("verify-students.html")) initVerifyStudents(user);
 });
 
-// ─── ADMIN DASHBOARD ──────────────────────────────────────────────
 function initDashboard(user) {
-    // Stats
     fetch(`${API}/stats.php`)
         .then(r => r.json())
         .then(data => {
@@ -99,7 +92,6 @@ function initDashboard(user) {
             if(h2s[3]) h2s[3].textContent = s.appointment_letters;
         });
 
-    // Vacancies table
     fetch(`${API}/vacancies.php`)
         .then(r => r.json())
         .then(data => {
@@ -134,7 +126,6 @@ function initDashboard(user) {
             });
         });
 
-    // Recent Activity — pull from appointment letters
     fetch(`${API}/letters.php`)
         .then(r => r.json())
         .then(data => {
@@ -163,7 +154,6 @@ function initDashboard(user) {
                 actTbody.appendChild(tr);
             });
 
-    // Pending Student Verifications (Dashboard)
     function loadDashboardVerifications() {
         const unverifiedTbody = document.getElementById("unverified-students-tbody");
         if (!unverifiedTbody) return;
@@ -178,7 +168,6 @@ function initDashboard(user) {
                     return;
                 }
                 
-                // Show only top 5 on dashboard
                 data.users.slice(0, 5).forEach(s => {
                     const tr = document.createElement("tr");
                     tr.innerHTML = `
@@ -201,7 +190,6 @@ function initDashboard(user) {
                     unverifiedTbody.appendChild(tr);
                 });
                 
-                // Add event listeners
                 unverifiedTbody.querySelectorAll(".verify-btn").forEach(btn => {
                     btn.addEventListener("click", function() {
                         const tr = this.closest("tr");
@@ -227,7 +215,7 @@ function initDashboard(user) {
                         .then(res => {
                             if (res.success) {
                                 showNotice("Student verified successfully!");
-                                loadDashboardVerifications(); // Reload the list
+                                loadDashboardVerifications();
                             } else {
                                 alert(res.message);
                                 this.textContent = "Verify & Save";
@@ -240,11 +228,9 @@ function initDashboard(user) {
     }
     loadDashboardVerifications();
         }).catch(() => {});
-} // end initDashboard
+}
 
-// ─── CREATE VACANCY ───────────────────────────────────────────────
 function initCreateVacancy(user) {
-    // Target the dedicated publish button (NOT an anchor that would navigate away)
     const publishBtn = document.getElementById("publish-btn");
     if (!publishBtn) return;
 
@@ -296,7 +282,7 @@ function initCreateVacancy(user) {
                 responsibilities: resp,
                 deadline: deadline,
                 start_date: start || deadline,
-                status: "Open"  // Always set to Open so students see it immediately
+                status: "Open"
             })
         })
         .then(r => r.json())
@@ -318,7 +304,6 @@ function initCreateVacancy(user) {
     });
 }
 
-// ─── SHORTLIST CANDIDATES ─────────────────────────────────────────
 function initShortlist(user) {
     const tbody = document.querySelector("table tbody");
     if (!tbody) return;
@@ -364,7 +349,6 @@ function initShortlist(user) {
             });
         });
 
-    // Move selected to shortlist
     const btnPrimary = document.querySelector("a.btn-primary");
     if (btnPrimary) {
         btnPrimary.addEventListener("click", function(e) {
@@ -385,12 +369,11 @@ function initShortlist(user) {
 
             Promise.all(promises).then(() => {
                 alert("Selected candidates moved to shortlist!");
-                initShortlist(user); // reload table
+                initShortlist(user);
             }).catch(() => alert("Error updating status."));
         });
     }
 
-    // Select all checkbox
     const selectAll = document.querySelector("table thead input[type='checkbox']");
     if (selectAll) {
         selectAll.addEventListener("change", function() {
@@ -399,7 +382,6 @@ function initShortlist(user) {
     }
 }
 
-// ─── APPOINTMENT LETTERS ──────────────────────────────────────────
 function initAppointmentLetter(user) {
     const candidateSelect = document.getElementById("candidate");
     if (!candidateSelect) return;
@@ -408,14 +390,12 @@ function initAppointmentLetter(user) {
 
     let applications = [];
 
-    // Load Shortlisted or Interview Scheduled candidates
     fetch(`${API}/applications.php`)
         .then(r => r.json())
         .then(data => {
             if (!data.success) return;
             candidateSelect.innerHTML = "<option value=''>Select a candidate</option>";
             
-            // Only Selected candidates get appointment letters usually, but allowing Shortlisted/Interview for testing flow
             applications = data.applications.filter(a => a.status === "Shortlisted" || a.status === "Interview Scheduled" || a.status === "Selected");
             
             applications.forEach(a => {
@@ -431,12 +411,10 @@ function initAppointmentLetter(user) {
         const app = applications.find(a => a.id == appId);
         if (!app) return;
 
-        // Auto-fill form fields
         document.getElementById("position-title").value = `Teaching Assistant, ${app.course_code} — ${app.course_title}`;
         document.getElementById("letter-hours").value = app.weekly_hours || 10;
         document.getElementById("letter-stipend").value = app.stipend || 8000;
         
-        // Setup live preview
         document.getElementById("preview-date").textContent = new Date().toLocaleDateString("en-US", {month:"long", day:"numeric", year:"numeric"});
         document.getElementById("preview-candidate").innerHTML = `${app.student_name}<br>Student ID: ${app.student_uni_id}<br>${app.email}`;
         document.getElementById("preview-greeting").textContent = `Dear ${app.student_name.split(' ')[0]},`;
@@ -457,7 +435,6 @@ function initAppointmentLetter(user) {
             }
         };
 
-        // Attach listeners for live update
         const inputs = ["position-title", "letter-hours", "letter-stipend", "letter-start", "letter-end", "report-to"];
         inputs.forEach(id => {
             const el = document.getElementById(id);
@@ -467,10 +444,8 @@ function initAppointmentLetter(user) {
         renderPreview();
     }
 
-    // Update letter preview when candidate is selected
     candidateSelect.addEventListener("change", updatePreview);
 
-    // Generate & send button
     const generateBtn = document.getElementById("generate-btn");
     const statusMsg = document.getElementById("letter-status-msg");
 
@@ -531,7 +506,6 @@ function initAppointmentLetter(user) {
         });
     }
 
-    // Print button
     const printBtn = document.createElement("button");
     printBtn.type = "button";
     printBtn.className = "btn btn-outline";
@@ -544,8 +518,6 @@ function initAppointmentLetter(user) {
     }
 }
 
-
-// ─── VERIFY STUDENTS ──────────────────────────────────────────────
 function initVerifyStudents(user) {
     const tbody = document.getElementById("verify-tbody");
     const filter = document.getElementById("verify-status-filter");
@@ -589,7 +561,6 @@ function initVerifyStudents(user) {
                     tbody.appendChild(tr);
                 });
                 
-                // Add event listeners to verify buttons
                 tbody.querySelectorAll(".verify-btn").forEach(btn => {
                     btn.addEventListener("click", function() {
                         const tr = this.closest("tr");

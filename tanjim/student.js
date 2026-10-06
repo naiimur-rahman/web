@@ -1,12 +1,6 @@
-// ========================================================
-// tanjim/student.js — Student Portal JavaScript
-// UIU TA Management System
-// ========================================================
 
-// ─── 1. API BASE URL ────────────────────────────────────
 const API = "../api";
 
-// ─── 2. GET LOGGED-IN USER from localStorage (set by login) ─────
 function getUser() {
     try {
         return JSON.parse(localStorage.getItem("uiu_user")) || null;
@@ -15,7 +9,6 @@ function getUser() {
     }
 }
 
-// ─── 3. REDIRECT if not logged in as student ─────────────────────
 function requireStudentLogin() {
     const user = getUser();
     if (!user) {
@@ -28,7 +21,6 @@ function requireStudentLogin() {
         return null;
     }
     
-    // Verify session is still valid
     fetch(`${API}/auth.php`)
         .then(r => r.json())
         .then(data => {
@@ -41,7 +33,6 @@ function requireStudentLogin() {
     return user;
 }
 
-// ─── 4. UPDATE SIDEBAR with real user info ────────────────────────
 function updateSidebar(user) {
     if (!user) return;
 
@@ -54,18 +45,15 @@ function updateSidebar(user) {
     
     if (iconEl) {
         if (user.profile_picture && user.profile_picture !== 'default.png') {
-            // Show uploaded profile picture in sidebar
             iconEl.innerHTML = `<img src="../uploads/profiles/${user.profile_picture}" 
                 style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
             iconEl.style.fontSize = "0";
         } else {
-            // Show first letter as fallback
             iconEl.textContent = (user.name || "S").charAt(0).toUpperCase();
         }
     }
 }
 
-// ─── 5. SHOW NOTIFICATION (inline, no alerts) ────────────────────
 function showNotice(message, type = "success") {
     let notice = document.getElementById("js-notice");
     if (!notice) {
@@ -91,7 +79,6 @@ function showNotice(message, type = "success") {
     }, 3500);
 }
 
-// ─── 6. LOGOUT function ──────────────────────────────────────────
 function logout() {
     localStorage.removeItem("uiu_user");
     fetch(`${API}/auth.php?action=logout`).finally(() => {
@@ -99,7 +86,6 @@ function logout() {
     });
 }
 
-// Wire up logout links
 document.querySelectorAll(".logout a, .logout").forEach(el => {
     if (el.tagName === "A") {
         el.addEventListener("click", function(e) {
@@ -109,16 +95,10 @@ document.querySelectorAll(".logout a, .logout").forEach(el => {
     }
 });
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: STUDENT DASHBOARD
-// ─────────────────────────────────────────────────────────────────
 function initDashboard(user) {
-    // Update welcome message
     const welcomeH2 = document.querySelector(".welcome h2");
     if (welcomeH2) welcomeH2.textContent = `Welcome back, ${user.name}!`;
 
-    // Load stats from API
     fetch(`${API}/stats.php?role=student&student_id=${user.id}`)
         .then(r => r.json())
         .then(data => {
@@ -138,9 +118,8 @@ function initDashboard(user) {
             if (statStatuses[2]) statStatuses[2].textContent = `${s.interviews} Upcoming`;
             if (statStatuses[3]) statStatuses[3].textContent = `${s.selected} Active`;
         })
-        .catch(() => { /* stats fail silently */ });
+        .catch(() => { });
 
-    // Load recent available positions
     fetch(`${API}/vacancies.php?status=Open`)
         .then(r => r.json())
         .then(data => {
@@ -174,9 +153,8 @@ function initDashboard(user) {
                 positionRow.appendChild(card);
             });
         })
-        .catch(() => { /* positions fail silently */ });
+        .catch(() => { });
 
-    // Load recent applications
     fetch(`${API}/applications.php?student_id=${user.id}`)
         .then(r => r.json())
         .then(data => {
@@ -187,7 +165,6 @@ function initDashboard(user) {
             const table = document.querySelector("table");
             if (!table) return;
 
-            // Clear existing body rows (keep header)
             const rows = table.querySelectorAll("tbody tr");
             rows.forEach(r => r.remove());
 
@@ -215,9 +192,8 @@ function initDashboard(user) {
                 tBody.appendChild(tr);
             });
         })
-        .catch(() => { /* applications fail silently */ });
+        .catch(() => { });
         
-    // Load Notices
     fetch(`${API}/notices.php`)
         .then(r => r.json())
         .then(data => {
@@ -236,7 +212,6 @@ function initDashboard(user) {
             }
         });
         
-    // Load Deadlines
     Promise.all([
         fetch(`${API}/vacancies.php?status=Open`).then(r => r.json()),
         fetch(`${API}/tasks.php?student_id=${user.id}`).then(r => r.json())
@@ -274,7 +249,6 @@ function initDashboard(user) {
     });
 }
 
-// Map application status to CSS class
 function getStatusClass(status) {
     const map = {
         "Pending": "review",
@@ -287,13 +261,8 @@ function getStatusClass(status) {
     return map[status] || "review";
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: STUDENT PROFILE
-// ─────────────────────────────────────────────────────────────────
 function initProfile(user) {
     function renderProfile(data) {
-        // Large avatar
         const largeAvatar = document.getElementById("avatar-container");
         if (largeAvatar) {
             if (data.profile_picture && data.profile_picture !== 'default.png') {
@@ -305,10 +274,8 @@ function initProfile(user) {
             }
         }
         
-        // Update sidebar
         updateSidebar(data);
 
-        // Profile header
         const dispName = document.getElementById("disp-name");
         if (dispName) dispName.textContent = data.name || "Student";
         
@@ -318,7 +285,6 @@ function initProfile(user) {
         const dispDept = document.getElementById("disp-dept");
         if (dispDept) dispDept.textContent = `${data.department || "CSE"} • Active Student`;
 
-        // Display fields
         if(document.getElementById("val-name")) document.getElementById("val-name").textContent = data.name || "N/A";
         if(document.getElementById("val-uid")) document.getElementById("val-uid").textContent = data.university_id || "N/A";
         if(document.getElementById("val-email")) document.getElementById("val-email").textContent = data.email || "N/A";
@@ -329,7 +295,6 @@ function initProfile(user) {
         if(document.getElementById("val-semester")) document.getElementById("val-semester").textContent = data.semester || "N/A";
         if(document.getElementById("val-cgpa")) document.getElementById("val-cgpa").textContent = data.cgpa || "N/A";
         
-        // Update inputs
         document.querySelector("input[name='name']").value = data.name || "";
         document.querySelector("input[name='university_id']").value = data.university_id || "";
         document.querySelector("input[name='email']").value = data.email || "";
@@ -340,18 +305,15 @@ function initProfile(user) {
         document.querySelector("input[name='semester']").value = data.semester || "";
         if(document.querySelector("input[name='cgpa']")) document.querySelector("input[name='cgpa']").value = data.cgpa || "";
         
-        // Update local storage
         localStorage.setItem("uiu_user", JSON.stringify(data));
     }
 
-    // Load profile from API
     fetch(`${API}/profile.php`)
         .then(r => r.json())
         .then(data => {
             if(data.success) renderProfile(data.profile);
         });
         
-    // TA Info Load
     fetch(`${API}/applications.php?student_id=${user.id}&status=Selected`)
         .then(r => r.json())
         .then(data => {
@@ -365,7 +327,6 @@ function initProfile(user) {
             }
         });
 
-    // Toggle Edit Mode
     const editBtn = document.getElementById("edit-profile-btn");
     const saveBtn = document.getElementById("save-profile-btn");
     
@@ -409,7 +370,6 @@ function initProfile(user) {
         });
     }
 
-    // Profile Picture Upload
     const avatarContainer = document.getElementById("avatar-container");
     const fileInput = document.getElementById("profile-upload");
     if (avatarContainer && fileInput) {
@@ -433,7 +393,6 @@ function initProfile(user) {
                     avatarContainer.style.background = "none";
                     avatarContainer.style.border = "none";
                     
-                    // Update sidebar avatar
                     const sidebarAvatar = document.querySelector(".profile-icon");
                     if (sidebarAvatar) {
                         sidebarAvatar.innerHTML = `<img src="../uploads/profiles/${res.profile_picture}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
@@ -446,15 +405,10 @@ function initProfile(user) {
     }
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: AVAILABLE POSITIONS (ta_position.html)
-// ─────────────────────────────────────────────────────────────────
 function initPositions(user) {
     const positionList = document.querySelector(".position-list");
     if (!positionList) return;
 
-    // Show loading state
     positionList.innerHTML = "<p style='padding:20px; color:#888;'>Loading positions...</p>";
 
     fetch(`${API}/vacancies.php`)
@@ -508,7 +462,6 @@ function initPositions(user) {
                 positionList.appendChild(card);
             });
 
-            // Search functionality
             const searchInput = document.getElementById("positionSearch");
             if (searchInput) {
                 searchInput.addEventListener("input", function() {
@@ -524,15 +477,10 @@ function initPositions(user) {
         });
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: APPLY (apply.html)
-// ─────────────────────────────────────────────────────────────────
 function initApply(user) {
     const form = document.getElementById("apply-form");
     if (!form) return;
 
-    // Auto-fill student info from session using explicit IDs
     const nameInput   = document.getElementById("student-name");
     const idInput     = document.getElementById("student-uni-id");
     const cgpaInput   = document.getElementById("student-cgpa");
@@ -544,7 +492,6 @@ function initApply(user) {
     if (idInput)    { idInput.value    = user.university_id  || ""; }
     if (cgpaInput)  { cgpaInput.value  = user.cgpa           || ""; }
 
-    // Load vacancy options dynamically from DB
     if (select) {
         const urlParams     = new URLSearchParams(window.location.search);
         const preSelectedId = urlParams.get("vacancy_id");
@@ -570,7 +517,6 @@ function initApply(user) {
             });
     }
 
-    // Handle form submission via fetch — no page navigation via HTML action
     form.addEventListener("submit", function(e) {
         e.preventDefault();
 
@@ -628,20 +574,14 @@ function initApply(user) {
     });
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: MY APPLICATIONS (my_applications.html)
-// ─────────────────────────────────────────────────────────────────
 function initMyApplications(user) {
     const panel = document.querySelector(".panel");
     if (!panel) return;
 
-    // Remove static placeholder cards
     panel.querySelectorAll(".application-card").forEach(c => c.remove());
 
     const bottomBtn = panel.querySelector(".bottom-button");
 
-    // Insert loading state
     const loadingEl = document.createElement("p");
     loadingEl.style.cssText = "color:#888; padding:10px;";
     loadingEl.textContent = "Loading your applications...";
@@ -681,7 +621,6 @@ function initMyApplications(user) {
                     : "N/A";
                 const statusClass = getStatusClass(app.status);
 
-                // Determine timeline step
                 const statuses = ["Pending", "Under Review", "Shortlisted", "Interview Scheduled", "Selected"];
                 let stepIndex = statuses.indexOf(app.status);
                 let timelineHTML = "";
@@ -731,24 +670,17 @@ function initMyApplications(user) {
         });
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: ASSIGNED TASKS (assigned_task.html)
-// ─────────────────────────────────────────────────────────────────
 function initAssignedTasks(user) {
     const panel = document.querySelector(".panel");
     if (!panel) return;
 
-    // Remove static placeholder task cards
     panel.querySelectorAll(".task-card").forEach(c => c.remove());
 
-    // Loading state
     const loadingEl = document.createElement("p");
     loadingEl.style.cssText = "color:#888; padding:10px;";
     loadingEl.textContent = "Loading tasks...";
     panel.appendChild(loadingEl);
 
-    // Load current TA assignment info
     fetch(`${API}/applications.php?student_id=${user.id}&status=Selected`)
         .then(r => r.json())
         .then(data => {
@@ -775,7 +707,6 @@ function initAssignedTasks(user) {
 
             const tasks = data.tasks;
 
-            // Update stats counters
             const totalEl     = document.querySelectorAll(".stats .stat .number")[0];
             const completedEl = document.querySelectorAll(".stats .stat .number")[1];
             const pendingEl   = document.querySelectorAll(".stats .stat .number")[2];
@@ -818,7 +749,6 @@ function initAssignedTasks(user) {
                     </div>
                 `;
 
-                // Click to toggle task status
                 div.addEventListener("click", function() {
                     const statusEl  = div.querySelector(".task-status");
                     const newStatus = statusEl.classList.contains("completed") ? "Pending" : "Completed";
@@ -832,12 +762,10 @@ function initAssignedTasks(user) {
                     .then(res => {
                         if (res.success) {
                             showNotice(`Task marked as ${newStatus}`);
-                            // Update UI immediately
                             statusEl.textContent = newStatus;
                             statusEl.className = `task-status ${newStatus === "Completed" ? "completed" : "pending"}`;
                             task.status = newStatus;
 
-                            // Recount stats
                             const allStatuses = Array.from(panel.querySelectorAll(".task-status")).map(el => el.textContent.trim());
                             const c = allStatuses.filter(s => s === "Completed").length;
                             const p = allStatuses.filter(s => s !== "Completed").length;
@@ -859,19 +787,12 @@ function initAssignedTasks(user) {
         });
 }
 
-
-// ─────────────────────────────────────────────────────────────────
-// MAIN — Initialize based on current page
-// ─────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", function() {
-    // Require login for all student pages
     const user = requireStudentLogin();
     if (!user) return;
 
-    // Update sidebar
     updateSidebar(user);
 
-    // Wire up logout
     document.querySelectorAll(".logout a").forEach(el => {
         el.href = "#";
         el.addEventListener("click", function(e) {
@@ -882,7 +803,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const path = window.location.pathname;
 
-    // Route to correct page initializer
     if (path.includes("student_dashboard.html")) {
         initDashboard(user);
     } else if (path.includes("student_profile.html")) {
@@ -900,17 +820,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
-// ─────────────────────────────────────────────────────────────────
-// PAGE: APPOINTMENT LETTER (appointment_letter.html)
-// ─────────────────────────────────────────────────────────────────
 function initAppointmentLetter(user) {
     const container = document.getElementById("letter-content");
     if (!container) return;
 
     container.innerHTML = `<p style="color:#888; padding:20px 0;">Loading your appointment letter...</p>`;
 
-    // Fetch letter by student university_id
     fetch(`${API}/letters.php?student_uni_id=${encodeURIComponent(user.university_id || user.username)}`)
         .then(r => r.json())
         .then(data => {
@@ -926,15 +841,13 @@ function initAppointmentLetter(user) {
                 return;
             }
 
-            // Show the most recent letter
             const letter = data.letters[0];
             const issued = new Date(letter.issued_at).toLocaleDateString("en-US", {day:"numeric", month:"long", year:"numeric"});
             const startFmt = letter.start_date ? new Date(letter.start_date).toLocaleDateString("en-US", {day:"numeric", month:"long", year:"numeric"}) : "—";
             const endFmt   = letter.end_date   ? new Date(letter.end_date).toLocaleDateString("en-US",   {day:"numeric", month:"long", year:"numeric"}) : "—";
 
-            // Build formal salutation
             const firstName = user.name ? user.name.split(" ")[0] : "Student";
-            const gender    = ""; // Could be extended
+            const gender    = "";
             const salutation= `Dear ${firstName},`;
 
             container.innerHTML = `
